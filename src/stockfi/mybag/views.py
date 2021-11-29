@@ -8,8 +8,9 @@ from .graph import return_graph
 def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
-def show(request):
+def show(request,symbol):
     context = {
-        'stock_graph': return_graph()
+        'avg': return_graph(symbol, 3, 'avg'),
+        'volatility': return_graph(symbol, 3, 'volatility')
     }
     return render(request, 'mybag/dashboard.html', context)
