@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
+from .forms import StockForm
 from .graph import return_graph
 
 # Create your views here.
@@ -14,3 +15,19 @@ def show(request,symbol):
         'volatility': return_graph(symbol, 3, 'volatility')
     }
     return render(request, 'mybag/dashboard.html', context)
+
+def stocklookup(request):
+
+    if request.method == 'POST':
+        form = StockForm(request.POST)
+
+        if form.is_valid():
+            stock_symbol = form.cleaned_data['stock_symbol']
+            return HttpResponseRedirect(f'/stock/ai/{stock_symbol}', {'stock_symbol':stock_symbol})
+
+    else:
+        form = StockForm()
+        context ={
+            'form':form,
+        }
+    return render(request, 'mybag/create.html', context)

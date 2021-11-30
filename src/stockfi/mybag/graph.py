@@ -29,7 +29,7 @@ def return_graph(symbol,years,gtype):
     else: 
        btc['returns'] = (btc['Close']/btc['Close'].shift(1)) -1
        btc['returns'].hist(bins = 100, label = symbol, alpha = 0.5, figsize = (15,7))
-       plt.title("Volatility of {} Today".format(symbol))
+       plt.title("Daily Volatility of {}".format(symbol))
        plt.legend()
        imgdata = StringIO()
        plt.savefig(imgdata, format='svg')
