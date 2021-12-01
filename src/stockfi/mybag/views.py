@@ -12,7 +12,8 @@ def index(request):
 def show(request,symbol):
     context = {
         'avg': return_graph(symbol, 3, 'avg'),
-        'volatility': return_graph(symbol, 3, 'volatility')
+        'volatility': return_graph(symbol, 3, 'volatility'),
+        'symbol': symbol
     }
     return render(request, 'mybag/dashboard.html', context)
 

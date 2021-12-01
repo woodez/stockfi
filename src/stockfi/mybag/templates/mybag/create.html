@@ -8,8 +8,25 @@
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <title>Woodez Stock Picking AI</title>
+      <style>
+          #foo {
+              position: absolute;
+              right:300px;
+          }
+      </style>
   </head>
   <body>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a class="nav-link" href="">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://192.168.2.26:8080/">Stock Analyzer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="">Manage My Portfolio</a>
+        </li>
+      </ul>
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-4">Woodez Stock Picker</h1>
@@ -17,13 +34,13 @@
         </div>
     </div>  
     <form method ='post'>
-        <div class="form-group">
+        <div class="form-group" id="foo">
             {% csrf_token %}
             {{form}} 
             <small id="emailHelp" class="form-text text-muted">Find out if the stock you like is a Woodez 10 bagger pick.[We always recommend you do your own research when making decision on buying stocks]</small>
+            <button type="submit" class="btn btn-primary">Run</button>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+    </form>
 
 
 
