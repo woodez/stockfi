@@ -1,0 +1,6 @@
+pandas
+datetime
+numpy
+matplotlib
+yfinance
+django
