@@ -1,6 +1,8 @@
 # stockfi
 investment tools.
 
+Lets go
+
 https://www.analyticsvidhya.com/blog/2021/07/stock-prices-analysis-with-python/
 
 Deploy prod django app
