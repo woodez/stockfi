@@ -3,7 +3,7 @@ import redis
 import yfinance as yf
 
 def cache_df(alias,df):
-    pool = redis.ConnectionPool(host='192.168.2.233', port='6379', db='stocks')
+    pool = redis.ConnectionPool(host='192.168.2.233', port='6379', db=0)
     cur = redis.Redis(connection_pool=pool)
     context = pa.default_serialization_context()
     df_compressed =  context.serialize(df).to_buffer().to_pybytes()
