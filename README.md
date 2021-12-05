@@ -11,3 +11,5 @@ Deploy prod django app
 https://www.howtoforge.com/how-to-install-django-on-centos-8/
 
 python3 -m pip install -r requirements.txt
+
+https://pypi.org/project/yfinance/  -> yahoo finance
