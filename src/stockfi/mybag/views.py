@@ -24,7 +24,8 @@ def stocklookup(request):
 
         if form.is_valid():
             stock_symbol = form.cleaned_data['stock_symbol']
-            return HttpResponseRedirect(f'/stock/ai/{stock_symbol}', {'stock_symbol':stock_symbol})
+            stock_symbol_upper = stock_symbol.upper()
+            return HttpResponseRedirect(f'/stock/ai/{stock_symbol_upper}', {'stock_symbol':stock_symbol_upper})
 
     else:
         form = StockForm()
