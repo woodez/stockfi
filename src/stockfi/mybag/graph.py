@@ -7,12 +7,33 @@ matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from pandas.plotting import scatter_matrix
 import yfinance as yf
+import pyarrow as pa
+import redis
+import warnings
+warnings.filterwarnings("ignore")
+
+def get_cached_df(alias):
+    pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
+    cur = redis.Redis(connection_pool=pool)
+    context = pa.default_serialization_context()
+    all_keys = [key.decode("utf-8") for key in cur.keys()]
+
+    if alias in all_keys:   
+        result = cur.get(alias)
+
+        dataframe = pd.DataFrame.from_dict(context.deserialize(result))
+
+        return dataframe
+
+    return None
+
 
 def return_graph(symbol,years,gtype):
     d = date.today()
     start = d.replace(year=d.year - years).strftime("%Y-%m-%d")
     end = d.strftime("%Y-%m-%d")
-    btc = yf.download(symbol,start,end)
+    btc = get_cached_df(symbol)
+#    btc = yf.download(symbol,start,end)
     plt.clf()
     if "avg" in gtype:
        btc['MA50'] = btc['Open'].rolling(50).mean()
