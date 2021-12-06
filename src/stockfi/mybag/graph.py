@@ -42,6 +42,7 @@ def return_graph(symbol,years,gtype):
        btc['MA50'].plot(label = "MA50")
        btc['MA200'].plot(label = "MA200")
        plt.title("{}".format(symbol))
+       plt.axes()
        plt.legend()
        imgdata = StringIO()
        plt.savefig(imgdata, format='svg')
