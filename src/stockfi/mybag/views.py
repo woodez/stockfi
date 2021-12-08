@@ -11,8 +11,8 @@ def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 def show(request,symbol):
+    info = Info(symbol)
     context = {
-        info = Info(symbol)
         'longName': info.get_longName()        
         'avg': return_graph(symbol, 3, 'avg'),
         'volatility': return_graph(symbol, 3, 'volatility'),
