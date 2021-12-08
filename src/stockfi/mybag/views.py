@@ -13,7 +13,7 @@ def index(request):
 def show(request,symbol):
     info = Info(symbol)
     context = {
-        'longName': info.get_longName()        
+        'longName': info.get_longName(),        
         'avg': return_graph(symbol, 3, 'avg'),
         'volatility': return_graph(symbol, 3, 'volatility'),
         'symbol': symbol
