@@ -3,6 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
 from .forms import StockForm
 from .graph import return_graph
+from .info import Info
 
 # Create your views here.
 
@@ -11,6 +12,8 @@ def index(request):
 
 def show(request,symbol):
     context = {
+        info = Info(symbol)
+        'longName': info.get_longName()        
         'avg': return_graph(symbol, 3, 'avg'),
         'volatility': return_graph(symbol, 3, 'volatility'),
         'symbol': symbol
