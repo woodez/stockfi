@@ -5,6 +5,9 @@ Lets go
 testing
 what
 
+https://www.section.io/engineering-education/django-app-using-postgresql-database/
+
+
 https://www.analyticsvidhya.com/blog/2021/07/stock-prices-analysis-with-python/
 
 Deploy prod django app
@@ -14,6 +17,7 @@ python3 -m pip install -r requirements.txt
 
 https://pypi.org/project/yfinance/  -> yahoo finance
 
+info:
 website
 longName
 recommendationMean
@@ -22,3 +26,5 @@ twoHundredDayAverage
 open
 marketCap
 logo_url
+
+news -> list of dictionaries
