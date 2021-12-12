@@ -13,4 +13,4 @@ class Info:
        return(self.data.get('logo_url', "NA"))
 
    def get_longBusinessSummary(self):
-       return(self.data.get('longBusinessSummary', "NA")) 
+       return(self.data.get('website', "NA")) 
