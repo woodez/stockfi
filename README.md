@@ -26,5 +26,6 @@ twoHundredDayAverage
 open
 marketCap
 logo_url
+longBusinessSummary
 
 news -> list of dictionaries

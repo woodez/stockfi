@@ -23,11 +23,10 @@
           <img src="{{ logo_url|safe }}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">{{ longName|safe }}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <p class="card-text">{{ long_sum|safe }}</p>
             <a href="#" class="btn btn-primary">Go somewhere</a>
           </div>
         </div>
-        <h2>{{ longName|safe }}</h2> 
         {{ avg|safe }}
         {{ volatility|safe }}
 

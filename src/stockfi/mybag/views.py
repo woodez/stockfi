@@ -14,7 +14,8 @@ def show(request,symbol):
     info = Info(symbol)
     context = {
         'longName': info.get_longName(),
-        'logo_url': info.get_logo_url(),        
+        'logo_url': info.get_logo_url(),
+        'long_sum': info.get_longBusinessSummary(),     
         'avg': return_graph(symbol, 3, 'avg'),
         'volatility': return_graph(symbol, 3, 'volatility'),
         'symbol': symbol
