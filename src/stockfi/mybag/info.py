@@ -8,3 +8,6 @@ class Info:
 
    def get_longName(self):
        return(self.data.get('longName', "NA"))
+
+   def get_logo_url(self):
+       return(self.data.get('logo_url', "NA"))
