@@ -54,7 +54,7 @@ def return_graph(symbol,years,gtype):
        plt.title("Daily Volatility of {}".format(symbol))
        plt.legend()
        imgdata = StringIO()
-       plt.savefig(imgdata, format='svg')
+       plt.savefig(imgdata, dpi=50, format='svg')
        imgdata.seek(0)
        data = imgdata.getvalue()
     return data
