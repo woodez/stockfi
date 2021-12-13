@@ -32,32 +32,30 @@
       </li>
     </ul>
     <br> 
-    
-    <div class="card" style="width: 18rem;">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJsEoFpVzRX7anHpLJ4P8xy7fbix5HFxqjtLX7bq7AbLJ1_3L02MWA5xSBTAqZ_W4kHhI&usqp=CAU" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Woodez Stock Finder</h5>
-        <p class="card-text">We recommend only using this as one of your stock picking tools(The best one of course!!). Please do your own extensive research before deciding to buy a stock that Woodez AI Engine Recomends.</p>
-        <form method ='post'>
-          <div class="form-group" id="foo">
-              {% csrf_token %}
-              {{form}} 
-              <small id="emailHelp" class="form-text text-muted">Find out if the stock you like is a Woodez 10 bagger pick.[We always recommend you do your own research when making decision on buying stocks]</small>
-              <button type="submit" class="btn btn-primary">Run</button>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJsEoFpVzRX7anHpLJ4P8xy7fbix5HFxqjtLX7bq7AbLJ1_3L02MWA5xSBTAqZ_W4kHhI&usqp=CAU" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Woodez Stock Finder</h5>
+              <p class="card-text">We recommend only using this as one of your stock picking tools(The best one of course!!). Please do your own extensive research before deciding to buy a stock that Woodez AI Engine Recomends.</p>
+            </div>
           </div>
-      </form>
-      </div>
-    </div>
-    
-    <form method ='post'>
-        <div class="form-group" id="foo">
-            {% csrf_token %}
-            {{form}} 
-            <small id="emailHelp" class="form-text text-muted">Find out if the stock you like is a Woodez 10 bagger pick.[We always recommend you do your own research when making decision on buying stocks]</small>
-            <button type="submit" class="btn btn-primary">Run</button>
         </div>
-    </form>
-
+        <div class="col">
+    
+          <form method ='post'>
+              <div class="form-group" id="foo">
+                  {% csrf_token %}
+                  {{form}} 
+                  <small id="emailHelp" class="form-text text-muted">Find your 10 bagger stock</small>
+                  <button type="submit" class="btn btn-primary">Run</button>
+              </div>
+          </form>
+        </div>
+      </div>    
+    </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
