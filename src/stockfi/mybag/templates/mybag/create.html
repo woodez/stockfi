@@ -17,6 +17,23 @@
               position: absolute;
               left:500px;
           }
+          .container {
+            font-family: arial;
+            font-size: 24px;
+            margin: 25px;
+            width: 350px;
+            height: 200px;
+            outline: dashed 1px black;
+            /* Center child horizontally*/
+            display: flex;
+            justify-content: center;
+          }
+          
+          .card {
+            width: 50px;
+            height: 50px;
+            background-color: grey;
+          }
       </style>
   </head>
   <body>
@@ -35,7 +52,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          <div class="card" style="width: 18rem;" id="foo">
+          <div class="card" style="width: 18rem;">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJsEoFpVzRX7anHpLJ4P8xy7fbix5HFxqjtLX7bq7AbLJ1_3L02MWA5xSBTAqZ_W4kHhI&usqp=CAU" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">HODL Stock Finder:</h5>
