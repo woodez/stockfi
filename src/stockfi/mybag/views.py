@@ -37,4 +37,4 @@ def stocklookup(request):
         context ={
             'form':form,
         }
-    return render(request, 'mybag/create.html', context)
+    return render(request, 'mybag/test.html', context)
