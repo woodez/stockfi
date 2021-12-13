@@ -47,14 +47,22 @@
           <br>
           <br>
           <br>
-          <form method ='post'>
-              <div class="form-group" id="foo">
-                  {% csrf_token %}
-                  {{form}} 
-                  <small id="emailHelp" class="form-text text-muted"> </small>
-                  <button type="submit" class="btn btn-primary">Ride The Train</button>
-              </div>
-          </form>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>
+                  <form method ='post'>
+                      <div class="form-group" id="foo">
+                          {% csrf_token %}
+                          {{form}} 
+                          <small id="emailHelp" class="form-text text-muted"> </small>
+                          <button type="submit" class="btn btn-primary">Ride The Train</button>
+                      </div>
+                  </form>
+                </th>
+              </tr>
+            </thead>
+          </table>        
         </div>
       </div>    
     </div>
