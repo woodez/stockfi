@@ -38,7 +38,14 @@
       <div class="card-body">
         <h5 class="card-title">Woodez Stock Finder</h5>
         <p class="card-text">We recommend only using this as one of your stock picking tools(The best one of course!!). Please do your own extensive research before deciding to buy a stock that Woodez AI Engine Recomends.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <form method ='post'>
+          <div class="form-group" id="foo">
+              {% csrf_token %}
+              {{form}} 
+              <small id="emailHelp" class="form-text text-muted">Find out if the stock you like is a Woodez 10 bagger pick.[We always recommend you do your own research when making decision on buying stocks]</small>
+              <button type="submit" class="btn btn-primary">Run</button>
+          </div>
+      </form>
       </div>
     </div>
     
