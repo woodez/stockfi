@@ -20,7 +20,7 @@ def show(request,symbol):
         'volatility': return_graph(symbol, 3, 'volatility'),
         'symbol': symbol
     }
-    return render(request, 'mybag/dashboard.html', context)
+    return render(request, 'mybag/test.html', context)
 
 def stocklookup(request):
 
@@ -37,4 +37,4 @@ def stocklookup(request):
         context ={
             'form':form,
         }
-    return render(request, 'mybag/test.html', context)
+    return render(request, 'mybag/create.html', context)
