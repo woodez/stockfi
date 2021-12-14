@@ -20,6 +20,20 @@
       </style>
   </head>
   <body>
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="#">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../../../">Stock Analyzer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="">Viewing {{ symbol|safe }} Data</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Manage My Portfolio</a>
+      </li>
+    </ul>
     <br>
     <br>
     <div class="container">  
@@ -29,10 +43,10 @@
         </div>  
         <div class="col-sm">  
           <div class="card" style="width: 18rem;">
-            <h5 class="card-header">woodez.org</h5>
+            <h5 class="card-header">HODL Stock Finder</h5>
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJsEoFpVzRX7anHpLJ4P8xy7fbix5HFxqjtLX7bq7AbLJ1_3L02MWA5xSBTAqZ_W4kHhI&usqp=CAU" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">HODL Stock Finder:</h5>
+              <h5 class="card-title">Find 10 bagger!!</h5>
               <form method ='post'>
                 <div class="form-group">
                     {% csrf_token %}
