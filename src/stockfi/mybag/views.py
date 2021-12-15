@@ -19,7 +19,7 @@ def show(request,symbol):
         'longName': info.get_longName(),
         'logo_url': info.get_logo_url(),
         'long_sum': info.get_longBusinessSummary(),
-        'stock_rating': get_stock_rating(),
+        'stock_rating': info.get_stock_rating(),
         'avg': graph,
         'volatility': return_graph(symbol, 3, 'volatility'),
         'symbol': symbol
