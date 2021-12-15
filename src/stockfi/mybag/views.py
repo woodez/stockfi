@@ -11,12 +11,16 @@ def index(request):
     return HttpResponse("Hello, world. You're at the polls index.")
 
 def show(request,symbol):
-    info = Info(symbol)
+    data = return_graph(symbol, 3, 'avg')
+    graph = data.get('graph', "NA")
+    current_ma200 = data.get('current_ma200', "NA")
+    info = Info(symbol, current_ma200)
     context = {
         'longName': info.get_longName(),
         'logo_url': info.get_logo_url(),
-        'long_sum': info.get_longBusinessSummary(),     
-        'avg': return_graph(symbol, 3, 'avg'),
+        'long_sum': info.get_longBusinessSummary(),
+        'stock_rating': get_stock_rating(),
+        'avg': graph,
         'volatility': return_graph(symbol, 3, 'volatility'),
         'symbol': symbol
     }

@@ -47,7 +47,9 @@ def return_graph(symbol,years,gtype):
        plt.grid()
        plt.savefig(imgdata, format='svg')
        imgdata.seek(0)
+       current_ma200_value = btc['MA200'].tail(1).values[0]
        data = imgdata.getvalue()
+       return { "graph": data, "current_ma200": current_ma200_value }
     else: 
        btc['returns'] = (btc['Close']/btc['Close'].shift(1)) -1
        btc['returns'].hist(bins = 100, label = symbol, alpha = 0.5, figsize = (15,7))
@@ -57,7 +59,7 @@ def return_graph(symbol,years,gtype):
        plt.savefig(imgdata, dpi=50, format='svg')
        imgdata.seek(0)
        data = imgdata.getvalue()
-    return data
+       return data
 
 #    x = np.arange(0,np.pi*3,.1)
 #    y = np.sin(x)
