@@ -34,7 +34,11 @@
               <div class="card-body">
                 <h5 class="card-title">{{ longName|safe }}</h5>
                 <p class="card-text">{{ long_sum|safe }}</p>
-                <span class="badge rounded-pill bg-success">{{ stock_rating|safe }}</span>
+                {% if "HODL" in stock_rating %}
+                    <span class="badge rounded-pill bg-success">{{ stock_rating|safe }}</span>
+                {% else %}
+                    <span class="badge rounded-pill bg-warning text-dark">{{ stock_rating|safe }}</span>
+                {% endif %}
               </div>
             </div>
           </div>
