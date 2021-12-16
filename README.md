@@ -39,5 +39,12 @@ marketCap
 
 logo_url
 longBusinessSummary
+volume
+averageVolume10day
+averageVolume
+fiftyDayAverage
+twoHundredDayAverage
+previousClose
+
 
 news -> list of dictionaries

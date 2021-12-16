@@ -27,6 +27,27 @@ class Info:
 
    def get_marketCap(self):
        return(self.data.get('marketCap', "NA"))
+    
+    def get_volume(self):
+        return(self.data.get('volume', "NA"))
+
+    def get_averageVolume10day(self):
+        return(self.data.get('averageVolume10day', "NA"))
+    
+    def get_averageVolume(self):
+        return(self.data.get('averageVolume', "NA"))
+
+    def get_fiftyDayAverage(self):
+        return(self.data.get('fiftyDayAverage', "NA"))
+
+    def get_twoHundredDayAverage(self):
+        return(self.data.get('twoHundredDayAverage', "NA"))
+
+    def get_previousClose(self):
+        return(self.data.get('previousClose', "NA"))
+
+    def get_open(self):
+        return(self.data.get('open', "NA"))
    
    def get_stock_rating(self):
        current_open = self.data.get('open', "9000")

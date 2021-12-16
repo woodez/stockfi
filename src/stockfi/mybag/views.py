@@ -26,6 +26,13 @@ def show(request,symbol):
         'priceToBook': info.get_pb(),
         'debtToEquity': info.get_debttoequity(),
         'marketCap': info.get_marketCap(),
+        'volume': info.get_volume(),
+        'averageVolume10day': info.get_averageVolume10day(),
+        'averageVolume': info.get_averageVolume(),
+        'fiftyDayAverage': info.get_fiftyDayAverage(),
+        'twoHundredDayAverage': info.get_twoHundredDayAverage(),
+        'previousClose': get_previousClose(),
+        'open': get_open(),
         'symbol': symbol
     }
     return render(request, 'mybag/test.html', context)
