@@ -22,6 +22,10 @@ def show(request,symbol):
         'stock_rating': info.get_stock_rating(),
         'avg': graph,
         'volatility': return_graph(symbol, 3, 'volatility'),
+        'recommendationMean': info.get_mean(),
+        'priceToBook': info.get_pb(),
+        'debtToEquity': info.get_debttoequity(),
+        'marketCap': info.get_marketCap(),
         'symbol': symbol
     }
     return render(request, 'mybag/test.html', context)

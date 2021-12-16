@@ -45,12 +45,13 @@
           <div class="col">
             <div class="card" style="width: 18rem;">
               <div class="card-header">
-                Featured
+                Key Data Points
               </div>
               <ul class="list-group list-group-flush">
-                <li class="list-group-item">An item</li>
-                <li class="list-group-item">A second item</li>
-                <li class="list-group-item">A third item</li>
+                <li class="list-group-item">recommendationMean: {{ recommendationMean|safe }}</li>
+                <li class="list-group-item">priceToBook: {{ priceToBook|safe }}</li>
+                <li class="list-group-item">debtToEquity: {{ debtToEquity|safe }}</li>
+                <li class="list-group-item">marketCap: {{ marketCap|safe }}</li>
               </ul>
             </div>
           </div>

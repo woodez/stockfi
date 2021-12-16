@@ -18,6 +18,15 @@ class Info:
 
    def get_mean(self):
        return(self.data.get('recommendationMean', "NA"))
+
+   def get_pb(self):
+       return(self.data.get('priceToBook', "NA"))
+
+   def get_debttoequity(self):
+       return(self.data.get('debtToEquity', "NA"))
+
+   def get_marketCap(self):
+       return(self.data.get('marketCap', "NA"))
    
    def get_stock_rating(self):
        current_open = self.data.get('open', "9000")
