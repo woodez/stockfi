@@ -47,29 +47,63 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
-                  <th scope="col">Handle</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Value</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
+                  <td>open</td>
+                  <td>{{ open|safe }}</td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
+                  <td>previousClose</td>
+                  <td>{{ previousClose|safe }}</td>
                 </tr>
                 <tr>
                   <th scope="row">3</th>
-                  <td colspan="2">Larry the Bird</td>
-                  <td>@twitter</td>
+                  <td colspan="2">volume</td>
+                  <td>{{ volume|safe }}</td>
                 </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td colspan="2">averageVolume</td>
+                  <td>{{ averageVolume|safe }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td colspan="2">fiftyDayAverage</td>
+                  <td>{{ fiftyDayAverage|safe }}</td>
+                </tr>               
+                <tr>
+                  <th scope="row">6</th>
+                  <td colspan="2">twoHundredDayAverage</td>
+                  <td>{{ twoHundredDayAverage|safe }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td colspan="2">priceToBook</td>
+                  <td>{{ priceToBook|safe }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td colspan="2">debtToEquity</td>
+                  <td>{{ debtToEquity|safe }}</td>
+                </tr>               
+                <tr>
+                  <th scope="row">9</th>
+                  <td colspan="2">marketCap</td>
+                  <td>{{ marketCap|safe }}</td>
+                </tr>
+                <tr>
+                  <th scope="row">10</th>
+                  <td colspan="2">recommendationMean</td>
+                  <td>{{ recommendationMean|safe }}</td>
+                </tr>
+
+
               </tbody>
             </table>
             <div class="card" style="width: 18rem;">
