@@ -31,8 +31,8 @@ def show(request,symbol):
         'averageVolume': info.get_averageVolume(),
         'fiftyDayAverage': info.get_fiftyDayAverage(),
         'twoHundredDayAverage': info.get_twoHundredDayAverage(),
-        'previousClose': get_previousClose(),
-        'open': get_open(),
+        'previousClose': info.get_previousClose(),
+        'open': info.get_open(),
         'symbol': symbol
     }
     return render(request, 'mybag/test.html', context)
