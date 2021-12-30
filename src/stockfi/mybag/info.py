@@ -50,7 +50,10 @@ class Info:
        return(self.data.get('open', "NA"))
     
    def get_returnOnEquity(self):
-       percent = "{:.0%}".format(float(self.data.get('returnOnEquity', "NA")))
+       if self.data.get('returnOnEquity', None) is None:
+          percent = "NA"
+       else:
+          percent = "{:.0%}".format(float(self.data.get('returnOnEquity', "NA")))
        return(percent)
    
    def get_stock_rating(self):
