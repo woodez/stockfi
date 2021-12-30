@@ -1,9 +1,8 @@
 # stockfi
 investment tools.
 
-Lets go
-testing
-what
+
+https://finance.zacks.com/seven-ways-analyze-stock-4845.html
 
 https://www.section.io/engineering-education/django-app-using-postgresql-database/
 

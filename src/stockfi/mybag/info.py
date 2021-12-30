@@ -48,6 +48,10 @@ class Info:
 
    def get_open(self):
        return(self.data.get('open', "NA"))
+    
+   def get_returnOnEquity(self):
+       percent = "{:.0%}".format(float(payinfo.info.get('returnOnEquity', "NA")))
+       return(percent)
    
    def get_stock_rating(self):
        current_open = self.data.get('open', "9000")
@@ -56,4 +60,3 @@ class Info:
        else:
           rating = "Woodez HODL Rating"
        return(rating)
-         

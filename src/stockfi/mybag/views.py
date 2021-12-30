@@ -32,6 +32,7 @@ def show(request,symbol):
         'fiftyDayAverage': info.get_fiftyDayAverage(),
         'twoHundredDayAverage': info.get_twoHundredDayAverage(),
         'previousClose': info.get_previousClose(),
+        'returnOnEquity': info.get_returnOnEquity(),
         'open': info.get_open(),
         'symbol': symbol
     }
