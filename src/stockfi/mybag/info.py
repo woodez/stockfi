@@ -50,7 +50,7 @@ class Info:
        return(self.data.get('open', "NA"))
     
    def get_returnOnEquity(self):
-       percent = "{:.0%}".format(float(payinfo.info.get('returnOnEquity', "NA")))
+       percent = "{:.0%}".format(float(self.data.get('returnOnEquity', "NA")))
        return(percent)
    
    def get_stock_rating(self):
