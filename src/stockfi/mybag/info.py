@@ -58,7 +58,7 @@ class Info:
    
    def get_stock_rating(self):
        current_open = self.data.get('open', "9000")
-       if int(current_open) < int(self.current_ma200):
+       if int(current_open) < self.current_ma200:
           rating = 'Woodez Buy Rating'
        else:
           rating = "Woodez HODL Rating"
