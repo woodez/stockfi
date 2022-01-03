@@ -59,11 +59,15 @@ def stocklookup(request):
 def portfolio(request,portfolio_owner):
     portfolio_list = MyBag.objects.all()
     stock_list = []
+    stock_dict = {}
     for i, obj in enumerate(portfolio_list):
         if obj.username == portfolio_owner:
            stock_list.append(obj.stock_ticker)
+           tmpdict = { obj.stock_ticker: obj.number_shares}
+           stock_dict.update(tmpdict)
            context = {
-               'stock_list': stock_list
+               'stock_list': stock_list,
+               'stock_dict': stock_dict,
            }
         else:
            stock_list = ["empty"]
