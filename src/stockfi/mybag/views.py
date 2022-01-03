@@ -65,15 +65,18 @@ def portfolio(request,portfolio_owner):
            stock_list.append(obj.stock_ticker)
            tmpdict = { obj.stock_ticker: obj.number_shares}
            stock_dict.update(tmpdict)
-           context = {
-               'stock_list': stock_list,
-               'stock_dict': stock_dict,
-           }
         else:
            stock_list = ["empty"]
            context = {
                'stock_list': stock_list
            }
+    sorted_dict = {}
+    sorted_keys = sorted(stock_dict, key=stock_dict.get)
+    for w in sorted_keys:
+        sorted_dict[w] = dict1[w]
+    context = {
+       'stock_dict': sorted_dict,
+    }
     return render(request, 'mybag/portfolio.html', context)
 
 
