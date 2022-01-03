@@ -11,10 +11,45 @@
     <title>stockfi</title>
   </head>
   <body>
-    <h1>it worked</h1>
-    {% for key, value in stock_dict.items %}
-       {{ key }} : {{ value }}
-    {% endfor %}
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../../">Stock Analyzer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="">Viewing {{ symbol|safe }} Data</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Manage My Portfolio</a>
+        </li>
+      </ul>
+      <br>        
+          <div class="col">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th colspan="2" class="table-secondary">Ticker</th>
+                  <th scope="col" class="table-secondary">Holding Position</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for key, value in stock_dict.items %}
+                <tr class="table-primary">
+                    <td colspan="2">open</td>
+                    <td>{{ key|safe }}</td>
+                    <td>{{ value|safe }}</td>
+                </tr>
+              {% endfor %}  
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>  
+<!--    {% for key, value in stock_dict.items %}  -->
+<!--       {{ key }} : {{ value }} -->
+<!--    {% endfor %} -->
     <!-- Optional JavaScript; choose one of the two! -->
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
