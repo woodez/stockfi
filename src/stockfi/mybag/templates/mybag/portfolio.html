@@ -37,8 +37,7 @@
               <tbody>
               {% for key, value in stock_dict.items %}
                 <tr class="table-primary">
-                    <td colspan="2">open</td>
-                    <td>{{ key|safe }}</td>
+                    <td colspan="2">{{ key|safe }}</td>
                     <td>{{ value|safe }}</td>
                 </tr>
               {% endfor %}  
