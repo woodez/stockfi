@@ -61,7 +61,7 @@ def portfolio(request,portfolio_owner):
     stock_list = []
     stock_dict = {}
     for i, obj in enumerate(portfolio_list):
-        if obj.username == portfolio_owner:
+        if obj.username == portfolio_owner and obj.number_shares != 0:
            stock_list.append(obj.stock_ticker)
            tmpdict = { obj.stock_ticker: obj.number_shares}
            stock_dict.update(tmpdict)
