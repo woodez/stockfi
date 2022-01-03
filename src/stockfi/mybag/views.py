@@ -73,7 +73,7 @@ def portfolio(request,portfolio_owner):
     sorted_dict = {}
     sorted_keys = sorted(stock_dict, key=stock_dict.get)
     for w in sorted_keys:
-        sorted_dict[w] = dict1[w]
+        sorted_dict[w] = stock_dict[w]
     context = {
        'stock_dict': sorted_dict,
     }
