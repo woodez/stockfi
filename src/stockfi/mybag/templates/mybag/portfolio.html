@@ -12,10 +12,6 @@
   </head>
   <body>
     <h1>it worked</h1>
-    {% for i in stock_list %}
-       <p>Ticker: {{ i }}</p>
-    {% endfor %}
-
     {% for key, value in stock_dict.items %}
        {{ key }} : {{ value }}
     {% endfor %}
