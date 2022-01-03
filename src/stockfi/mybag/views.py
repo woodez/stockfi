@@ -4,6 +4,7 @@ from django.template import loader
 from .forms import StockForm
 from .graph import return_graph
 from .info import Info
+from .models import MyBag
 
 # Create your views here.
 
@@ -54,3 +55,22 @@ def stocklookup(request):
             'form':form,
         }
     return render(request, 'mybag/create.html', context)
+
+def portfolio(request,portfolio_owner):
+    portfolio_list = MyBag.objects.all()
+    stock_list = []
+    for i, obj in enumerate(portfolio_list):
+        if obj.username == portfolio_owner:
+           stock_list.append(obj.stock_ticker)
+           context = {
+               'stock_list': stock_list
+           }
+        else:
+           stock_list = ["empty"]
+           context = {
+               'stock_list': stock_list
+           }
+    return render(request, 'mybag/portfolio.html', context)
+
+
+
