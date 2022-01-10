@@ -15,7 +15,7 @@ class Portfolio:
    def get_porfolio_value(self):
        value_list = []
        for key, value in self.stockdata.items():
-           price = get_close_value(key)
+           price = self.get_close_value(key)
            market_value = float(price) * float(value)
            value_list.append(market_value)
        total = math.fsum(value_list)
