@@ -4,6 +4,7 @@ from django.template import loader
 from .forms import StockForm
 from .graph import return_graph
 from .info import Info
+from .portfolio import Portfolio
 from .models import MyBag
 
 # Create your views here.
@@ -70,12 +71,15 @@ def portfolio(request,portfolio_owner):
            context = {
                'stock_list': stock_list
            }
+    portfolio_obj = Portfolio(stock_dict)
+    port_value = portfolio_obj.get_porfolio_value()      
     sorted_dict = {}
     sorted_keys = sorted(stock_dict, key=stock_dict.get, reverse=True)
     for w in sorted_keys:
         sorted_dict[w] = stock_dict[w]
     context = {
        'stock_dict': sorted_dict,
+       'portfolio_total': port_value,
     }
     return render(request, 'mybag/portfolio.html', context)
 

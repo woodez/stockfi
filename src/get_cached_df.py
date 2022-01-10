@@ -20,4 +20,4 @@ def get_cached_df(alias):
     return None
 
 test = get_cached_df("TSLA")
-print(test)
+print(test['Close'])
