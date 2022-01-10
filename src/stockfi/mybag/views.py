@@ -71,15 +71,15 @@ def portfolio(request,portfolio_owner):
            context = {
                'stock_list': stock_list
            }
-    portfolio_obj = Portfolio(stock_dict)
-    port_value = portfolio_obj.get_porfolio_value()      
+#    portfolio_obj = Portfolio(stock_dict)
+#    port_value = portfolio_obj.get_porfolio_value()      
     sorted_dict = {}
     sorted_keys = sorted(stock_dict, key=stock_dict.get, reverse=True)
     for w in sorted_keys:
         sorted_dict[w] = stock_dict[w]
     context = {
        'stock_dict': sorted_dict,
-       'portfolio_total': port_value,
+       'portfolio_total': "789798",
     }
     return render(request, 'mybag/portfolio.html', context)
 
