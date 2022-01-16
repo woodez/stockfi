@@ -4,6 +4,7 @@ import pyarrow as pa
 import redis
 import sys
 import warnings
+import pandas as pd
 
 # regularMarketPrice': 314.04,
 
@@ -29,6 +30,6 @@ class Portfolio:
 
    def get_porfolio_value(self):
        df = self.get_cached_df().tail(1)
-       total = df['value'].values[0]
+       total = float(df['value'].values[0])
        return '${:,.2f}'.format(total)           
            
