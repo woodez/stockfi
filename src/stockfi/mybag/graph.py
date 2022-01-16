@@ -61,6 +61,17 @@ def return_graph(symbol,years,gtype):
        data = imgdata.getvalue()
        return data
 
+def graph_portfolio(portfolio_data, name):
+    portfolio_data['value'].plot(label = name, figsize = (15,7))
+    plt.title("{}".format(name))
+    plt.legend()
+    imgdata = StringIO()
+    plt.grid()
+    plt.savefig(imgdata, format='svg')
+    imgdata.seek(0)
+    data = imgdata.getvalue()
+    return data
+
 #    x = np.arange(0,np.pi*3,.1)
 #    y = np.sin(x)
 #    fig = plt.figure()

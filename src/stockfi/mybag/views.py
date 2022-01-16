@@ -73,7 +73,8 @@ def portfolio(request,portfolio_owner):
            }
     portfolio_obj = Portfolio("woodez")
     port_value = portfolio_obj.get_porfolio_value()
-    port_trend = portfolio_obj.get_daily_trend()      
+    port_trend = portfolio_obj.get_daily_trend()
+    port_graph = portfolio_obj.get_portfolio_graph()
     sorted_dict = {}
     sorted_keys = sorted(stock_dict, key=stock_dict.get, reverse=True)
     for w in sorted_keys:
@@ -81,7 +82,8 @@ def portfolio(request,portfolio_owner):
     context = {
        'stock_dict': sorted_dict,
        'portfolio_total': port_value,
-       'portfolio_trend': port_trend
+       'portfolio_trend': port_trend,
+       'portfolio_graph': port_graph
     }
     return render(request, 'mybag/portfolio.html', context)
 

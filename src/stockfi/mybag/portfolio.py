@@ -5,6 +5,7 @@ import redis
 import sys
 import warnings
 import pandas as pd
+from .graph import graph_portfolio
 
 # regularMarketPrice': 314.04,
 
@@ -33,6 +34,10 @@ class Portfolio:
        total = float(df['value'].values[0])
        return '${:,.2f}'.format(total) 
 
+   def get_portfolio_graph(self):
+       portfolio_data = self.get_cached_df()
+       return graph_portfolio(portfolio_data, self.portfolio)
+   
    def get_daily_trend(self):
        df = self.get_cached_df().tail(2)
        latest = float(df['value'].values[1])
