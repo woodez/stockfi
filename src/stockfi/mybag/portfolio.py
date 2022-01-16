@@ -36,6 +36,7 @@ class Portfolio:
 
    def get_portfolio_graph(self):
        portfolio_data = self.get_cached_df()
+       portfolio_data["value"] = pd.to_numeric(portfolio_data["value"], downcast="float")
        return graph_portfolio(portfolio_data, self.portfolio)
    
    def get_daily_trend(self):
