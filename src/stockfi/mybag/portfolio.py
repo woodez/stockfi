@@ -38,7 +38,7 @@ class Portfolio:
        latest = float(df['value'].values[1])
        nextup = float(df['value'].values[0])
        if latest < nextup:
-           portfolio_trend = "Daily Trend is Down")
+           portfolio_trend = "Daily Trend is Down"
        else:
            portfolio_trend = "Daily Trend is Up"
 
