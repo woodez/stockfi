@@ -1,5 +1,7 @@
 import pandas
 import psycopg2
+import yfinance as yf
+import math
 
 def insert_database(stock_ticker, number_shares):
     connection = psycopg2.connect(user="stockfi",

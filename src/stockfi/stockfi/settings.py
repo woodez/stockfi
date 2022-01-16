@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'mybag',
     'hello_world',
     'testdb',
+    'reset_migrations',
 ]
 
 MIDDLEWARE = [

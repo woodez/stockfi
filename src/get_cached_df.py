@@ -19,5 +19,5 @@ def get_cached_df(alias):
 
     return None
 
-test = get_cached_df("TSLA")
-print(test['Close'])
+test = get_cached_df("woodez").tail(1)
+print(test['value'].values[0])
