@@ -19,5 +19,12 @@ def get_cached_df(alias):
 
     return None
 
-test = get_cached_df("woodez").tail(1)
-print(test['value'].values[0])
+test = get_cached_df("woodez").tail(2)
+latest = float(test['value'].values[1])
+nextup = float(test['value'].values[0])
+print(latest)
+print(nextup)
+if latest < nextup:
+    print("Daily Trend is Down")
+else:
+    print("Daily Trend is Up")

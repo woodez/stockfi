@@ -31,5 +31,16 @@ class Portfolio:
    def get_porfolio_value(self):
        df = self.get_cached_df().tail(1)
        total = float(df['value'].values[0])
-       return '${:,.2f}'.format(total)           
+       return '${:,.2f}'.format(total) 
+
+   def get_daily_trend(self):
+       df = self.get_cached_df().tail(2)
+       latest = float(df['value'].values[1])
+       nextup = float(df['value'].values[0])
+       if latest < nextup:
+           portfolio_trend = "Daily Trend is Down")
+       else:
+           portfolio_trend = "Daily Trend is Up"
+
+       return portfolio_trend
            
