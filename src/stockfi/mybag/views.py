@@ -30,6 +30,7 @@ def show(request,symbol):
         'marketCap': info.get_marketCap(),
         'volume': info.get_volume(),
         'averageVolume10day': info.get_averageVolume10day(),
+        'MarketPrice': info.regularMarketPrice(),
         'averageVolume': info.get_averageVolume(),
         'fiftyDayAverage': info.get_fiftyDayAverage(),
         'twoHundredDayAverage': info.get_twoHundredDayAverage(),

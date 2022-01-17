@@ -63,7 +63,7 @@ def return_graph(symbol,years,gtype):
 
 def graph_portfolio(portfolio_data, name):
     portfolio_data['value'].plot(label = "Woodez Innovation Fund", figsize = (7,5))
-    plt.title("{}".format(name))
+    plt.title("{}".format("Woodez Innovation Fund"))
     plt.legend()
     imgdata = StringIO()
     plt.grid()

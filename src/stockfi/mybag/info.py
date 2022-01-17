@@ -12,6 +12,9 @@ class Info:
 
    def get_logo_url(self):
        return(self.data.get('logo_url', "NA"))
+    
+   def regularMarketPrice(self):
+       return(self.data.get('regularMarketPrice', "NA"))
 
    def get_longBusinessSummary(self):
        return(self.data.get('website', "NA")) 

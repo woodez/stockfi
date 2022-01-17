@@ -42,7 +42,7 @@ class Portfolio:
        return graph_portfolio(portfolio_data, self.portfolio)
 
    def get_portfolio_table(self):
-       portfolio_data = self.get_cached_df()
+       portfolio_data = self.get_cached_df().tail(10)
        portfolio_data["value"] = pd.to_numeric(portfolio_data["value"], downcast="float")
        portfolio_data["Date"] = pd.to_datetime(portfolio_data["date"])
        portfolio_data = portfolio_data.set_index('Date')
@@ -50,7 +50,7 @@ class Portfolio:
        port_dict = {}
        for line in sorted(portfolio_dict.get('value').keys(), reverse=True):
            key = str(line).split(" ")[0]
-           value = portfolio_dict.get('value')[line]
+           value = '${:,.2f}'.format(portfolio_dict.get('value')[line])
            tmpdict = { key:value }
            port_dict.update(tmpdict)
        return port_dict
@@ -60,9 +60,9 @@ class Portfolio:
        latest = float(df['value'].values[1])
        nextup = float(df['value'].values[0])
        if latest < nextup:
-           portfolio_trend = "Daily Trend is Down"
+           portfolio_trend = "Todays Trend is Down"
        else:
-           portfolio_trend = "Daily Trend is Up"
+           portfolio_trend = "Todays Trend is Up"
 
        return portfolio_trend
            
