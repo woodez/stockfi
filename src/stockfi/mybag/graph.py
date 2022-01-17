@@ -49,6 +49,10 @@ def return_graph(symbol,years,gtype):
        imgdata.seek(0)
        current_ma200_value = btc['MA200'].tail(1).values[0]
        data = imgdata.getvalue()
+       plt.figure().clear()
+       plt.close()
+       plt.cla()
+       plt.clf()
        return { "graph": data, "current_ma200": current_ma200_value }
     else: 
        btc['returns'] = (btc['Close']/btc['Close'].shift(1)) -1
@@ -59,6 +63,10 @@ def return_graph(symbol,years,gtype):
        plt.savefig(imgdata, dpi=50, format='svg')
        imgdata.seek(0)
        data = imgdata.getvalue()
+       plt.figure().clear()
+       plt.close()
+       plt.cla()
+       plt.clf()
        return data
 
 def graph_portfolio(portfolio_data, name):
@@ -70,6 +78,10 @@ def graph_portfolio(portfolio_data, name):
     plt.savefig(imgdata, format='svg')
     imgdata.seek(0)
     data = imgdata.getvalue()
+    plt.figure().clear()
+    plt.close()
+    plt.cla()
+    plt.clf()
     return data
 
 #    x = np.arange(0,np.pi*3,.1)
