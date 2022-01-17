@@ -48,10 +48,13 @@ test = test.set_index('Date')
 print(test.info())
 dict = test.to_dict()
 # print(dict.get('value').keys().sort_values())
+port_dict = {}
 for line in sorted(dict.get('value').keys(), reverse=True):
     key = str(line).split(" ")[0]
     value = dict.get('value')[line]
-    print("{0}:{1}".format(key,value))
+    tmp_dict = { key:value}
+    port_dict.update(tmp_dict)
+print(port_dict)
 
 ###btc['Open'].plot(label = 'BTC', figsize = (15,7))
 ####plt.title('BTC')
