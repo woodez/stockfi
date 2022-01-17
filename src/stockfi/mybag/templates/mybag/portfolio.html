@@ -33,7 +33,7 @@
                 <h5 class="card-title">Woodez Innovation Fund</h5>
                 <p class="card-text">Woodez Capital</p>
                 <p class="card-text">Inception Date: 2019-05-07</p> 
-                <p class="card-text">Net Assets: {{ portfolio_total|safe }}</p>
+                <p class="card-text">Net Assets: {{ portfolio_total|safe }} USD</p>
                 {% if "Up" in portfolio_trend %}
                       <span class="badge rounded-pill bg-success">{{ portfolio_trend|safe }}</span>
                 {% else %}
@@ -46,12 +46,12 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th colspan="2" class="table-secondary">Ticker</th>
-                  <th scope="col" class="table-secondary">Holding Position</th>
+                  <th colspan="2" class="table-secondary">Date</th>
+                  <th scope="col" class="table-secondary">Net Asset Value</th>
                 </tr>
               </thead>
               <tbody>
-              {% for key, value in stock_dict.items %}
+              {% for key, value in port_dict.items %}
                 <tr class="table-primary">
                     <td colspan="2">{{ key|safe }}</td>
                     <td>{{ value|safe }}</td>
@@ -80,12 +80,27 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              testing
+              Portfolio Holdings
             </button>
           </h2>
           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              testing
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th colspan="2" class="table-secondary">Ticker</th>
+                    <th scope="col" class="table-secondary">Holding Position</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for key, value in stock_dict.items %}
+                  <tr class="table-primary">
+                      <td colspan="2">{{ key|safe }}</td>
+                      <td>{{ value|safe }}</td>
+                  </tr>
+                {% endfor %}  
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

@@ -42,11 +42,19 @@ testing = btc['MA200'].tail(1).values[0]
 print(btc.info())
 test = get_cached_df("woodez")
 test["value"] = pd.to_numeric(test["value"], downcast="float")
-test["Datetime"] = pd.to_datetime(test["date"])
-test = test.set_index('Datetime')
+test["Date"] = pd.to_datetime(test["date"]).sort_values()
+test = test.set_index('Date')
+# test = test.sort_values(by=['Date'], inplace=True)
 print(test.info())
+dict = test.to_dict()
+# print(dict.get('value').keys().sort_values())
+for line in sorted(dict.get('value').keys(), reverse=True):
+    key = str(line).split(" ")[0]
+    value = dict.get('value')[line]
+    print("{0}:{1}".format(key,value))
+
 ###btc['Open'].plot(label = 'BTC', figsize = (15,7))
 ####plt.title('BTC')
-btc['Open'].tail(60).plot(label = 'WOODEZ', figsize = (15,7))
-plt.title('WOODEZ')
-plt.show()
+#####btc['Open'].tail(60).plot(label = 'WOODEZ', figsize = (15,7))
+#####plt.title('WOODEZ')
+#####plt.show()
