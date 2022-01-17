@@ -41,7 +41,7 @@ class Portfolio:
        portfolio_data = portfolio_data.set_index('Date')
        return graph_portfolio(portfolio_data, self.portfolio)
 
-    def get_portfolio_table(self):
+   def get_portfolio_table(self):
        portfolio_data = self.get_cached_df()
        portfolio_data["value"] = pd.to_numeric(portfolio_data["value"], downcast="float")
        portfolio_data["Date"] = pd.to_datetime(portfolio_data["date"])
