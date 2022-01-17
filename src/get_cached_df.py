@@ -1,6 +1,18 @@
 import pyarrow as pa
 import pandas as pd
 import redis
+import pandas as pd
+from io import StringIO
+from datetime import date
+import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+from pandas.plotting import scatter_matrix
+import yfinance as yf
+import pyarrow as pa
+import redis
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def get_cached_df(alias):
@@ -20,5 +32,9 @@ def get_cached_df(alias):
     return None
 
 test = get_cached_df("woodez")
-test['date'] = pd.to_datetime(test['date'])
-print(test.info())
+test["value"] = pd.to_numeric(test["value"], downcast="float")
+test["date"] = pd.to_datetime(test["date"])
+test = test.set_index(test["date"])
+plt.plot(test)
+plt.gcf().autofmt_xdate()
+plt.show()
