@@ -32,9 +32,4 @@ def get_cached_df(alias):
     return None
 
 test = get_cached_df("woodez")
-test["value"] = pd.to_numeric(test["value"], downcast="float")
-test["date"] = pd.to_datetime(test["date"])
-test = test.set_index(test["date"])
-plt.plot(test)
-plt.gcf().autofmt_xdate()
-plt.show()
+print(test)
