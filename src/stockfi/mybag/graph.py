@@ -116,7 +116,7 @@ def pie_portfolio_holdings(stock_dict):
 
 def pie_portfolio_value():
     df = get_cached_df("woodez_portfolio_details")
-    fig = plt.figure(figsize =(7,5))
+    fig = plt.figure(figsize =(15,7))
     plt.pie(df['Amount'], labels = df['Name'])
     plt.title("{}".format("Innovation Fund Capital Distribution"))
     imgdata = StringIO()
