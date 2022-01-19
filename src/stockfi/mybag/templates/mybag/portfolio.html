@@ -59,7 +59,6 @@
               {% endfor %}  
               </tbody>
             </table>
-            {{ portfolio_cap|safe }}
           </div>
         </div>
       </div>  
@@ -75,6 +74,7 @@
           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               {{ portfolio_graph|safe }}
+              {{ portfolio_cap|safe }}
             </div>
           </div>
         </div>
