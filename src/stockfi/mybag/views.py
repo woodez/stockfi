@@ -4,6 +4,7 @@ from django.template import loader
 from .forms import StockForm
 from .graph import return_graph
 from .graph import pie_portfolio_holdings
+from .graph import pie_portfolio_value
 from .info import Info
 from .portfolio import Portfolio
 from .models import MyBag
