@@ -78,6 +78,7 @@ def portfolio(request,portfolio_owner):
     port_trend = portfolio_obj.get_daily_trend()
     port_graph = portfolio_obj.get_portfolio_graph()
     holding_pie = pie_portfolio_holdings(stock_dict)
+    cap_pie = pie_portfolio_value()
     port_dict = portfolio_obj.get_portfolio_table()
     sorted_dict = {}
     sorted_keys = sorted(stock_dict, key=stock_dict.get, reverse=True)
@@ -89,6 +90,7 @@ def portfolio(request,portfolio_owner):
        'portfolio_trend': port_trend,
        'portfolio_graph': port_graph,
        'portfolio_holdings': holding_pie,
+       'portfolio_cap': cap_pie,
        'portfolio_data': port_dict
     }
     return render(request, 'mybag/portfolio.html', context)

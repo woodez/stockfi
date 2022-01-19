@@ -9,6 +9,7 @@ from .graph import graph_portfolio
 
 # regularMarketPrice': 314.04,
 
+
 class Portfolio:
    
    def __init__(self, portfolio):

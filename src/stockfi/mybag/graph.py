@@ -12,6 +12,8 @@ import redis
 import warnings
 warnings.filterwarnings("ignore")
 
+#get_cached_df("woodez_portfolio_details")
+
 def get_cached_df(alias):
     pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
     cur = redis.Redis(connection_pool=pool)
@@ -111,6 +113,21 @@ def pie_portfolio_holdings(stock_dict):
     plt.cla()
     plt.clf()
     return data
+
+def pie_portfolio_value():
+    df = get_cached_df("woodez_portfolio_details")
+    fig = plt.figure(figsize =(7,5))
+    plt.pie(df['Amount'], labels = df['Name'])
+    plt.title("{}".format("Innovation Fund Capital Distribution"))
+    imgdata = StringIO()
+    plt.savefig(imgdata, format='svg')
+    data = imgdata.getvalue()
+    plt.figure().clear()
+    plt.close()
+    plt.cla()
+    plt.clf()
+    return data
+
 #    x = np.arange(0,np.pi*3,.1)
 #    y = np.sin(x)
 #    fig = plt.figure()
