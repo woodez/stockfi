@@ -36,9 +36,11 @@ def return_graph(symbol,years,gtype):
 #    btc = yf.download(symbol,start,end)
     plt.clf()
     if "avg" in gtype:
-       btc['MA50'] = btc['Open'].rolling(50).mean()
-       btc['MA200'] = btc['Open'].rolling(200).mean()
+       btc['MA5'] = btc['Close'].rolling(5).mean()
+       btc['MA50'] = btc['Close'].rolling(50).mean()
+       btc['MA200'] = btc['Close'].rolling(200).mean()
        btc['Open'].plot(label = symbol, figsize = (15,7))
+       btc['MA5'].plot(label = "MA5")
        btc['MA50'].plot(label = "MA50")
        btc['MA200'].plot(label = "MA200")
        plt.title("{}".format(symbol))
@@ -98,10 +100,9 @@ def pie_portfolio_holdings(stock_dict):
     }
 
     df = pd.DataFrame(details)
-    fig = plt.figure(figsize =(10, 7))
+    fig = plt.figure(figsize =(7,5))
     plt.pie(df['Amount'], labels = df['Name'])
-    plt.title("{}".format("Woodez Innovation Fund"))
-    plt.legend()
+    plt.title("{}".format("Woodez Innovation Fund Holdings"))
     imgdata = StringIO()
     plt.savefig(imgdata, format='svg')
     data = imgdata.getvalue()
