@@ -3,6 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.template import loader
 from .forms import StockForm
 from .graph import return_graph
+from .graph import pie_portfolio_holdings
 from .info import Info
 from .portfolio import Portfolio
 from .models import MyBag
@@ -75,7 +76,8 @@ def portfolio(request,portfolio_owner):
     portfolio_obj = Portfolio("woodez")
     port_value = portfolio_obj.get_porfolio_value()
     port_trend = portfolio_obj.get_daily_trend()
-    port_graph = portfolio_obj.get_portfolio_graph()
+#    port_graph = portfolio_obj.get_portfolio_graph()
+    port_graph = pie_portfolio_holdings(stock_dict)
     port_dict = portfolio_obj.get_portfolio_table()
     sorted_dict = {}
     sorted_keys = sorted(stock_dict, key=stock_dict.get, reverse=True)

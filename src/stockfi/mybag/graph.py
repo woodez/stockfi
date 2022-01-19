@@ -84,6 +84,32 @@ def graph_portfolio(portfolio_data, name):
     plt.clf()
     return data
 
+def pie_portfolio_holdings(stock_dict):
+    tickers = []
+    volume = []
+    for line in stock_dict.keys():
+        if stock_dict[line] != 0:
+           tickers.append(line)
+           volume.append(stock_dict[line])
+
+    details = {
+        'Name': tickers,
+        'Amount': volume,
+    }
+
+    df = pd.DataFrame(details)
+    fig = plt.figure(label = "Woodez Innovation Fund", figsize =(10, 7))
+    plt.pie(df['Amount'], labels = df['Name'])
+    plt.title("{}".format("Woodez Innovation Fund"))
+    plt.legend()
+    imgdata = StringIO()
+    plt.savefig(imgdata, format='svg')
+    data = imgdata.getvalue()
+    plt.figure().clear()
+    plt.close()
+    plt.cla()
+    plt.clf()
+    return data
 #    x = np.arange(0,np.pi*3,.1)
 #    y = np.sin(x)
 #    fig = plt.figure()
