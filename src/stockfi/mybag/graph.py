@@ -98,7 +98,7 @@ def pie_portfolio_holdings(stock_dict):
     }
 
     df = pd.DataFrame(details)
-    fig = plt.figure(label = "Woodez Innovation Fund", figsize =(10, 7))
+    fig = plt.figure(figsize =(10, 7))
     plt.pie(df['Amount'], labels = df['Name'])
     plt.title("{}".format("Woodez Innovation Fund"))
     plt.legend()
