@@ -119,6 +119,7 @@ def pie_portfolio_value():
     fig = plt.figure(figsize =(7,5))
     plt.pie(df['Amount'], labels = df['Name'], autopct='%.0f%%')
     plt.title("{}".format("Innovation Fund Capital Distribution"))
+    plt.legend()
     imgdata = StringIO()
     plt.savefig(imgdata, format='svg')
     data = imgdata.getvalue()
