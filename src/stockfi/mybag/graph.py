@@ -120,6 +120,7 @@ def pie_portfolio_value():
 #    plt.pie(df['Amount'], labels = df['Name'], autopct='%.0f%%', wedgeprops={'linewidth': 2.0, 'edgecolor': 'white'}, textprops={'size': 'x-small'})
     plt.pie(df['Amount'], wedgeprops={'linewidth': 2.0, 'edgecolor': 'white'}, textprops={'size': 'x-small'})
     plt.title("{}".format("Innovation Fund Capital Distribution"))
+    plt.legend()
     plt.tight_layout()
     imgdata = StringIO()
     plt.savefig(imgdata, format='svg')
