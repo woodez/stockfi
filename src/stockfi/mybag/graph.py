@@ -131,6 +131,34 @@ def pie_portfolio_value():
     plt.clf()
     return data
 
+def portfolio_percent_holdings():
+    df = get_cached_df("woodez_portfolio_details")
+    total = float(df['Amount'].sum())
+    
+    percentage = []
+    for value in df['Amount']:
+        pct = (value/total) * 100
+        percentage.append(round(pct, 2))
+    df['Percentage'] = percentage   
+    
+    hist = {}
+    for index, row in df.iterrows():
+        tmpdict = { row['Name']:row['Percentage'] }
+        hist.update(tmpdict)
+    sorted_dict = {}
+    sorted_keys = sorted(hist, key=hist.get, reverse=True)
+    for w in sorted_keys:
+        sorted_dict[w] = hist[w]
+    return sorted_dict
+
+
+##        pct = (float(value['Amount']) / total)) * 100
+##        print(pct)
+#        percentage.append(round(pct, 2))
+#    df['Percentage'] = percentage
+#    print(df.to_dict('Percentage'))
+
+portfolio_percent_holdings()
 #    x = np.arange(0,np.pi*3,.1)
 #    y = np.sin(x)
 #    fig = plt.figure()

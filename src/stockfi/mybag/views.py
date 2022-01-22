@@ -5,6 +5,7 @@ from .forms import StockForm
 from .graph import return_graph
 from .graph import pie_portfolio_holdings
 from .graph import pie_portfolio_value
+from .graph import portfolio_percent_holdings
 from .info import Info
 from .portfolio import Portfolio
 from .models import MyBag
@@ -92,7 +93,8 @@ def portfolio(request,portfolio_owner):
        'portfolio_graph': port_graph,
        'portfolio_holdings': holding_pie,
        'portfolio_cap': cap_pie,
-       'portfolio_data': port_dict
+       'portfolio_data': port_dict,
+       'portfolio_pct_tbl': portfolio_percent_holdings()
     }
     return render(request, 'mybag/portfolio.html', context)
 
