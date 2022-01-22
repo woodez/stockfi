@@ -4,8 +4,9 @@ import pyarrow as pa
 import redis
 import sys
 import warnings
+warnings.filterwarnings("ignore")
 import pandas as pd
-from .graph import graph_portfolio
+# from .graph import graph_portfolio
 
 # regularMarketPrice': 314.04,
 
@@ -36,9 +37,12 @@ class Portfolio:
        return '${:,.2f}'.format(total) 
 
    def get_portfolio_std(self):
+       # A low standard deviation indicates that the values tend to be close to the mean 
+       # (also called the expected value) of the set, while a high standard 
+       # deviation indicates that the values are spread out over a wider range
        df = self.get_cached_df()
-       std_value = df.std(axis = 0, skipna = True)
-       return std_value['value']  
+       df["value"] = pd.to_numeric(df["value"], downcast="float")
+       return df["value"].std(axis= 0, skipna = True)
 
    def get_portfolio_graph(self):
        portfolio_data = self.get_cached_df()
@@ -71,4 +75,9 @@ class Portfolio:
            portfolio_trend = "Todays Trend is Up"
 
        return portfolio_trend
+
+
+portfolio_obj = Portfolio("woodez")
+port_std = portfolio_obj.get_portfolio_std()
+print(port_std)
            
