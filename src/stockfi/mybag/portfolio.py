@@ -35,6 +35,11 @@ class Portfolio:
        total = float(df['value'].values[0])
        return '${:,.2f}'.format(total) 
 
+   def get_portfolio_std(self):
+       df = self.get_cached_df()
+       std_value = df.std(axis = 0, skipna = True)
+       return std_value['value']  
+
    def get_portfolio_graph(self):
        portfolio_data = self.get_cached_df()
        portfolio_data["value"] = pd.to_numeric(portfolio_data["value"], downcast="float")

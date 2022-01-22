@@ -158,7 +158,7 @@ def portfolio_percent_holdings():
 #    df['Percentage'] = percentage
 #    print(df.to_dict('Percentage'))
 
-portfolio_percent_holdings()
+# portfolio_percent_holdings()
 #    x = np.arange(0,np.pi*3,.1)
 #    y = np.sin(x)
 #    fig = plt.figure()

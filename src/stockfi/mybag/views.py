@@ -82,6 +82,7 @@ def portfolio(request,portfolio_owner):
     holding_pie = pie_portfolio_holdings(stock_dict)
     cap_pie = pie_portfolio_value()
     port_dict = portfolio_obj.get_portfolio_table()
+    port_std = portfolio_obj.get_portfolio_std()
     sorted_dict = {}
     sorted_keys = sorted(stock_dict, key=stock_dict.get, reverse=True)
     for w in sorted_keys:
@@ -94,6 +95,7 @@ def portfolio(request,portfolio_owner):
        'portfolio_holdings': holding_pie,
        'portfolio_cap': cap_pie,
        'portfolio_data': port_dict,
+       'port_std': port_std,
        'portfolio_pct_tbl': portfolio_percent_holdings()
     }
     return render(request, 'mybag/portfolio.html', context)
