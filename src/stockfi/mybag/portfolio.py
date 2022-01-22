@@ -6,7 +6,7 @@ import sys
 import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
-# from .graph import graph_portfolio
+from .graph import graph_portfolio
 
 # regularMarketPrice': 314.04,
 
@@ -77,7 +77,7 @@ class Portfolio:
        return portfolio_trend
 
 
-portfolio_obj = Portfolio("woodez")
-port_std = portfolio_obj.get_portfolio_std()
-print(port_std)
+## portfolio_obj = Portfolio("woodez")
+## port_std = portfolio_obj.get_portfolio_std()
+## print(port_std)
            
