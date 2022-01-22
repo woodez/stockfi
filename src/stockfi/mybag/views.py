@@ -97,6 +97,3 @@ def portfolio(request,portfolio_owner):
        'portfolio_pct_tbl': portfolio_percent_holdings()
     }
     return render(request, 'mybag/portfolio.html', context)
-
-
-

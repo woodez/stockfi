@@ -80,14 +80,14 @@
                 <thead>
                   <tr>
                     <th colspan="2" class="table-secondary">Ticker</th>
-                    <th scope="col" class="table-secondary">Holding Position</th>
+                    <th scope="col" class="table-secondary">Weight</th>
                   </tr>
                 </thead>
                 <tbody>
                 {% for key, value in portfolio_pct_tbl.items %}
                   <tr class="table-primary">
                       <td colspan="2">{{ key|safe }}</td>
-                      <td>{{ value|safe }}</td>
+                      <td>{{ value|safe }}%</td>
                   </tr>
                 {% endfor %}  
                 </tbody>
