@@ -39,7 +39,6 @@
                 {% else %}
                       <span class="badge rounded-pill bg-success">{{ percent_change|safe }}%</span> 
                 {% endif %}
-                <p class="card-text">Change: {{ percent_change|safe }}%</p>
                 <p class="card-text">STD: {{ port_std|safe }}</p>
                 {% if "Up" in portfolio_trend %}
                       <span class="badge rounded-pill bg-success">{{ portfolio_trend|safe }}</span>
