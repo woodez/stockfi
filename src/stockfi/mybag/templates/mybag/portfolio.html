@@ -49,14 +49,14 @@
               <thead>
                 <tr>
                   <th colspan="2" class="table-secondary">Date</th>
-                  <th scope="col" class="table-secondary">Net Assets</th>
+                  <th scope="col" class="table-secondary">Value Change</th>
                 </tr>
               </thead>
               <tbody>
               {% for key, value in portfolio_data.items %}
                 <tr class="table-primary">
                     <td colspan="2">{{ key|safe }}</td>
-                    <td>{{ value|safe }}</td>
+                    <td>{{ value|safe }}%</td>
                 </tr>
               {% endfor %}  
               </tbody>
