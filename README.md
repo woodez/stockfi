@@ -1,5 +1,9 @@
 # stockfi
+
 investment tools.
+
+https://risk-engineering.org/notebook/stock-market.html
+
 
 https://medium.com/the-handbook-of-coding-in-finance/sentiment-analysis-of-stock-market-in-python-part-1-web-scraping-financial-news-51b7f603f320
 

@@ -44,6 +44,19 @@ class Portfolio:
        df["value"] = pd.to_numeric(df["value"], downcast="float")
        return df["value"].std(axis= 0, skipna = True)
 
+   def get_portfolio_mean(self):
+       df = self.get_cached_df()
+       df["value"] = pd.to_numeric(df["value"], downcast="float")
+       return df["value"].mean(axis= 0, skipna = True)
+
+   def get_pct_change(self):
+       df = self.get_cached_df()
+       df["value"] = pd.to_numeric(df["value"], downcast="float")
+       df["pct_change"] = df["value"].pct_change()
+       index = df["pct_change"].size - 1
+       return df["pct_change"][index] * 100
+
+
    def get_portfolio_graph(self):
        portfolio_data = self.get_cached_df()
        portfolio_data["value"] = pd.to_numeric(portfolio_data["value"], downcast="float")
@@ -77,7 +90,12 @@ class Portfolio:
        return portfolio_trend
 
 
-## portfolio_obj = Portfolio("woodez")
-## port_std = portfolio_obj.get_portfolio_std()
-## print(port_std)
+
+# portfolio_obj = Portfolio("woodez")
+# port_std = portfolio_obj.get_portfolio_std()
+# port_mean = portfolio_obj.get_portfolio_mean()
+# pct_chg = portfolio_obj.get_pct_change()
+# print(port_std)
+# print(port_mean)
+# print(pct_chg)
            
