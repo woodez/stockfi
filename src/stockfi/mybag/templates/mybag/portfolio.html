@@ -34,12 +34,12 @@
                 <p class="card-text">Woodez Capital</p>
                 <p class="card-text">Inception Date: 2019-05-07</p> 
                 <p class="card-text">Current Assets: {{ portfolio_total|safe }} USD</p>
+                <p class="card-text">STD: {{ port_std|safe }}</p>
                 {% if "-" in percent_change %}
                       <span class="badge rounded-pill bg-danger">{{ percent_change|safe }}%</span>
                 {% else %}
                       <span class="badge rounded-pill bg-success">{{ percent_change|safe }}%</span> 
                 {% endif %}
-                <p class="card-text">STD: {{ port_std|safe }}</p>
                 {% if "Up" in portfolio_trend %}
                       <span class="badge rounded-pill bg-success">{{ portfolio_trend|safe }}</span>
                 {% else %}
