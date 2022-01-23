@@ -55,7 +55,7 @@
               <tbody>
               {% for key, value in portfolio_data.items %}
                 <tr class="table-primary">
-                    <td colspan="2">{{ key|safe }}</td>
+                    <td class="table-light" colspan="2">{{ key|safe }}</td>
                     {% if "-" in value %}
                           <td class="table-danger">{{ value|safe }}%</td>
                     {% else %}
