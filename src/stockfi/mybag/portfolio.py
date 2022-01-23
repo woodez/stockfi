@@ -65,10 +65,11 @@ class Portfolio:
        return graph_portfolio(portfolio_data, self.portfolio)
 
    def get_portfolio_table(self):
-       portfolio_data = self.get_cached_df().tail(10)
+       portfolio_data = self.get_cached_df()
        portfolio_data["value"] = pd.to_numeric(portfolio_data["value"], downcast="float")
        portfolio_data["Date"] = pd.to_datetime(portfolio_data["date"])
        portfolio_data["value"] = portfolio_data["value"].pct_change() * 100
+       portfolio_data = portfolio_data.tail(10)
        portfolio_data = portfolio_data.set_index('Date')
        portfolio_dict = portfolio_data.to_dict()
        port_dict = {}
