@@ -19,5 +19,6 @@ from django.urls import include, path
 urlpatterns = [
     path('', include('mybag.urls')),
     path('stock/', include('mybag.urls')),
+    path('cypto/', include('mybag.urls')),
     path('admin/', admin.site.urls),
 ]
