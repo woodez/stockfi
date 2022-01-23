@@ -75,7 +75,9 @@ def return_graph(symbol,years,gtype):
 
 def graph_portfolio(portfolio_data, name):
 #    portfolio_data['value'].plot(label = "Woodez Innovation Fund", figsize = (7,5))
-    portfolio_data['value'].pct_change() * 100.plot(label = "Woodez Innovation Fund", figsize = (7,5))
+    portfolio_data["value"] = pd.to_numeric(portfolio_data["value"], downcast="float")
+    portfolio_data['pct_change'] = portfolio_data['value'].pct_change() * 100 
+    portfolio_data['pct_change'].plot(label = "Woodez Innovation Fund", figsize = (7,5))
     plt.title("{}".format("Woodez Innovation Fund"))
     plt.legend()
     imgdata = StringIO()
