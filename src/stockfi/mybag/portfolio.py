@@ -74,7 +74,8 @@ class Portfolio:
        port_dict = {}
        for line in sorted(portfolio_dict.get('value').keys(), reverse=True):
            key = str(line).split(" ")[0]
-           value = '${:,.2f}'.format(portfolio_dict.get('value')[line])
+#           value = '${:,.2f}'.format(portfolio_dict.get('value')[line])
+           value = '{:,.2f}'.format(portfolio_dict.get('value')[line])
            tmpdict = { key:value }
            port_dict.update(tmpdict)
        return port_dict
