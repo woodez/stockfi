@@ -6,7 +6,7 @@ import sys
 import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
-from .graph import graph_portfolio
+## from .graph import graph_portfolio
 
 # regularMarketPrice': 314.04,
 
@@ -52,10 +52,11 @@ class Portfolio:
    def get_pct_change(self):
        df = self.get_cached_df()
        df["value"] = pd.to_numeric(df["value"], downcast="float")
-       df["pct_change"] = df["value"].pct_change()
-       index = df["pct_change"].size - 1
-       return '{:,.2f}'.format(df["pct_change"][index] * 100)
-
+       test = 100*(df["value"].iloc[-1]/df["value"].iloc[0]-1) 
+#       df["pct_change"] = df["value"].pct_change()
+#       index = df["pct_change"].size - 1
+#       return '{:,.2f}'.format(df["pct_change"][index] * 100)
+       return '{:,.2f}'.format(test)
 
    def get_portfolio_graph(self):
        portfolio_data = self.get_cached_df()
@@ -94,11 +95,11 @@ class Portfolio:
 
 
 
-# portfolio_obj = Portfolio("woodez")
+portfolio_obj = Portfolio("woodez")
 # port_std = portfolio_obj.get_portfolio_std()
 # port_mean = portfolio_obj.get_portfolio_mean()
-# pct_chg = portfolio_obj.get_pct_change()
+pct_chg = portfolio_obj.get_pct_change()
 # print(port_std)
 # print(port_mean)
-# print(pct_chg)
+print(pct_chg)
            
