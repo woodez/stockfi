@@ -6,7 +6,7 @@ import sys
 import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
-## from .graph import graph_portfolio
+from .graph import graph_portfolio
 
 # regularMarketPrice': 314.04,
 
@@ -95,11 +95,11 @@ class Portfolio:
 
 
 
-portfolio_obj = Portfolio("woodez")
+# portfolio_obj = Portfolio("woodez")
 # port_std = portfolio_obj.get_portfolio_std()
 # port_mean = portfolio_obj.get_portfolio_mean()
-pct_chg = portfolio_obj.get_pct_change()
+# pct_chg = portfolio_obj.get_pct_change()
 # print(port_std)
 # print(port_mean)
-print(pct_chg)
+# print(pct_chg)
            
