@@ -54,7 +54,7 @@ class Portfolio:
        df["value"] = pd.to_numeric(df["value"], downcast="float")
        df["pct_change"] = df["value"].pct_change()
        index = df["pct_change"].size - 1
-       return df["pct_change"][index] * 100
+       return '${:,.2f}'.format(df["pct_change"][index] * 100)
 
 
    def get_portfolio_graph(self):
