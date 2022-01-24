@@ -30,10 +30,11 @@ class Crypto:
 
   #     return None
     
-   def get_mybtc_table(self):
+   def get_mybtc_table(self,output):
        crypto_data = self.get_cached_df("BTC-CAD-HIST")
        crypto_data["myvalue"] = crypto_data['Close'] * self.mysatoshi
-       crypto_data['myvalue'] = crypto_data['myvalue'].pct_change() * 100
+       if "pct" in output:
+          crypto_data['myvalue'] = crypto_data['myvalue'].pct_change() * 100
        crypto_data = crypto_data.tail(10)
        crypto_dict = crypto_data.to_dict()
        btc_dict = {}
