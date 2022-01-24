@@ -43,7 +43,8 @@ class Crypto:
        for line in sorted(crypto_dict.get('myvalue').keys(), reverse=True):
            key = str(line).split(" ")[0]
 #           value = '${:,.2f}'.format(portfolio_dict.get('value')[line])
-           value = '{:,.2f}'.format(crypto_dict.get('myvalue')[line])
+##           value = '{:,.2f}'.format(crypto_dict.get('myvalue')[line])
+           value = crypto_dict.get('myvalue')[line]
            tmpdict = { key:value }
            btc_dict.update(tmpdict)
        return btc_dict
