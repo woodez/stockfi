@@ -37,6 +37,7 @@
                 <p class="card-text">Woodez Capital</p>
                 <p class="card-text">Inception Date: 2019-05-07</p> 
                 <p class="card-text">Satoshi: 0.01677643 BTC</p>
+                <p class="card-text">{{ btc_current|safe }}</p>
                 {% if "-" in btc_day_trend %}
                    <span class="badge rounded-pill bg-danger">{{ btc_day_trend|safe }}%</span>
                 {% else %}
@@ -59,9 +60,9 @@
                 <tr class="table-primary">
                     <td class="table-dark" colspan="2">{{ key|safe }}</td>
                     {% if "-" in value %}
-                          <td class="table-danger">{{ value|safe }}%</td>
+                          <td class="table-danger">${{ value|safe }}</td>
                     {% else %}
-                          <td class="table-success">{{ value|safe }}%</td>
+                          <td class="table-success">${{ value|safe }}</td>
                     {% endif %}                         
                 </tr>
               {% endfor %}  

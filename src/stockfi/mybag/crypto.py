@@ -52,6 +52,12 @@ class Crypto:
        test = 100*(crypto_data["myvalue"].iloc[-1]/crypto_data["myvalue"].iloc[0]-1) 
        return '{:,.2f}'.format(test)
 
+   def get_current_price(self):
+       crypto_data = self.get_cached_df("BTC-CAD")
+       crypto_data.tail(1)
+       price = crypto_data['Close']
+       return price
+       
    def get_daily_price(self):
        crypto_data = self.get_cached_df("BTC-CAD")
        crypto_data = crypto_data.dropna()
