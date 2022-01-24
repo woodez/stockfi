@@ -17,7 +17,6 @@ class Portfolio:
        self.portfolio = portfolio
 
    def get_cached_df(self):
-
        pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
        cur = redis.Redis(connection_pool=pool)
        context = pa.default_serialization_context()

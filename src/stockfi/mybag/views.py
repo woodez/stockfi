@@ -8,6 +8,7 @@ from .graph import pie_portfolio_value
 from .graph import portfolio_percent_holdings
 from .info import Info
 from .portfolio import Portfolio
+from .crypto import Crypto
 from .models import MyBag
 
 # Create your views here.
@@ -103,4 +104,9 @@ def portfolio(request,portfolio_owner):
     return render(request, 'mybag/portfolio.html', context)
 
 def crypto(request):
-    return render(request, 'mybag/cypto.html')
+    crypto_obj = Crypto(0.01677643)
+    my_btc_table = crypto_obj.get_mybtc_table()
+    context = {
+        'crypto_port': my_btc_table
+    }
+    return render(request, 'mybag/cypto.html', context)

@@ -40,6 +40,32 @@
               </div>
             </div>
           </div>
+
+          <div class="col"> 
+            <table class="table">
+              <thead>
+                <tr>
+                  <th colspan="2" class="table-secondary">Date</th>
+                  <th scope="col" class="table-secondary">Change</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for key, value in crypto_port.items %}
+                <tr class="table-primary">
+                    <td class="table-dark" colspan="2">{{ key|safe }}</td>
+                    {% if "-" in value %}
+                          <td class="table-danger">{{ value|safe }}%</td>
+                    {% else %}
+                          <td class="table-success">{{ value|safe }}%</td>
+                    {% endif %}                         
+                </tr>
+              {% endfor %}  
+              </tbody>
+            </table>
+          </div>
+
+
+
         </div>
       </div>  
   <!--    {% for key, value in stock_dict.items %}  -->
