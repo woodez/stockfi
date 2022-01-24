@@ -91,6 +91,21 @@ def graph_portfolio(portfolio_data, name):
     plt.clf()
     return data
 
+def graph_btc_daily(crypto_data):
+    crypto_data['Close'].plot(label = "Daily BTC", figsize = (7,5))
+    plt.title("{}".format("Daily BTC"))
+    imgdata = StringIO()
+    plt.grid()
+    plt.savefig(imgdata, format='svg')
+    imgdata.seek(0)
+    data = imgdata.getvalue()
+    plt.figure().clear()
+    plt.close()
+    plt.cla()
+    plt.clf()
+    return data
+
+
 def pie_portfolio_holdings(stock_dict):
     tickers = []
     volume = []

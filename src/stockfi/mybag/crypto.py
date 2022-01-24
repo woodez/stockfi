@@ -6,7 +6,7 @@ import sys
 import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
-# from .graph import graph_portfolio
+from .graph import graph_btc_daily
 
 # BTC-CAD-HIST -> historic
 # BTC-CAD -> 1 day 1min interval
@@ -51,6 +51,12 @@ class Crypto:
        crypto_data = crypto_data.dropna()
        test = 100*(crypto_data["myvalue"].iloc[-1]/crypto_data["myvalue"].iloc[0]-1) 
        return '{:,.2f}'.format(test)
+
+   def get_daily_price(self):
+       crypto_data = self.get_cached_df("BTC-CAD")
+       crypto_data = crypto_data.dropna()
+       return graph_btc_daily(crypto_data)
+  
 
 # crypto_obj = Crypto(0.01677643)
 # print(crypto_obj.get_pct_change())
