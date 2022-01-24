@@ -34,7 +34,6 @@ class Crypto:
        crypto_data = self.get_cached_df("BTC-CAD-HIST")
        crypto_data["myvalue"] = crypto_data['Close'] * self.mysatoshi
        crypto_data['myvalue'] = crypto_data['myvalue'].pct_change() * 100
-       print(crypto_data['myvalue'])
        crypto_data = crypto_data.tail(10)
        crypto_dict = crypto_data.to_dict()
        btc_dict = {}
@@ -46,5 +45,13 @@ class Crypto:
            btc_dict.update(tmpdict)
        return btc_dict
 
+   def get_pct_change(self):
+       crypto_data = self.get_cached_df("BTC-CAD")
+       crypto_data["myvalue"] = crypto_data['Close'] * self.mysatoshi
+       crypto_data = crypto_data.dropna()
+       test = 100*(crypto_data["myvalue"].iloc[-1]/crypto_data["myvalue"].iloc[0]-1) 
+       return '{:,.2f}'.format(test)
+
 # crypto_obj = Crypto(0.01677643)
+# print(crypto_obj.get_pct_change())
 # print(crypto_obj.get_mybtc_table())

@@ -106,7 +106,9 @@ def portfolio(request,portfolio_owner):
 def crypto(request):
     crypto_obj = Crypto(0.01677643)
     my_btc_table = crypto_obj.get_mybtc_table()
+    btc_day_trend = crypto_obj.get_pct_change()
     context = {
-        'crypto_port': my_btc_table
+        'crypto_port': my_btc_table,
+        'btc_day_trend': btc_day_trend
     }
     return render(request, 'mybag/cypto.html', context)
