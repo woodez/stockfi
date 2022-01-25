@@ -6,6 +6,7 @@ import matplotlib
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from pandas.plotting import scatter_matrix
+import io, base64
 import yfinance as yf
 import pyarrow as pa
 import redis
@@ -94,16 +95,19 @@ def graph_portfolio(portfolio_data, name):
 def graph_btc_daily(crypto_data):
     crypto_data['Close'].plot(label = "Daily BTC", figsize = (7,5))
     plt.title("{}".format("Daily BTC"))
-    imgdata = StringIO()
     plt.grid()
-    plt.savefig(imgdata, format='svg')
-    imgdata.seek(0)
-    data = imgdata.getvalue()
-    plt.figure().clear()
-    plt.close()
-    plt.cla()
-    plt.clf()
-    return data
+    flike = io.BytesIO
+#    imgdata = StringIO()
+#    plt.grid()
+    plt.savefig(flike)
+    b64 = base64.b64encode(flike.getvalue()).decode()
+    context['chart'] = b64
+#    data = imgdata.getvalue()
+#    plt.figure().clear()
+#    plt.close()
+#    plt.cla()
+#    plt.clf()
+    return context
 
 
 def pie_portfolio_holdings(stock_dict):
