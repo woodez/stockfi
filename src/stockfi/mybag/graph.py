@@ -96,14 +96,14 @@ def graph_btc_daily(crypto_data):
     crypto_data['Close'].plot(label = "Daily BTC", figsize = (7,5))
     plt.title("{}".format("Daily BTC"))
     plt.grid()
-    flike = io.BytesIO
-#    imgdata = StringIO()
-#    plt.grid()
-    plt.savefig(flike, format='svg')
-    data = flike.getvalue()
-#    data = imgdata.getvalue()
+#    flike = io.BytesIO
+    imgdata = StringIO()
+    plt.grid()
+    plt.savefig(imgdata, format='svg')
+#    data = flike.getvalue()
+    data = imgdata.getvalue()
 #    plt.figure().clear()
-#    plt.close()
+    plt.close()
 #    plt.cla()
 #    plt.clf()
     return data
