@@ -99,9 +99,9 @@ def graph_btc_daily(crypto_data):
     flike = io.BytesIO
 #    imgdata = StringIO()
 #    plt.grid()
-    plt.savefig(flike)
+    plt.savefig(flike, format='svg')
     b64 = base64.b64encode(flike.getvalue()).decode()
-    context['chart'] = b64
+    context = b64
 #    data = imgdata.getvalue()
 #    plt.figure().clear()
 #    plt.close()
