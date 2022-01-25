@@ -71,10 +71,13 @@ class Crypto:
 #  SQ-trend
    def get_stock_trend(self,symbol):
        symbol = "{}-trend".format(symbol)
+       print(symbol)
        stock_data = self.get_cached_df(symbol)
+       # return stock_data
        return graph_stock_daily(stock_data,symbol)
   
 
 # crypto_obj = Crypto(0.01677643)
+# print(crypto_obj.get_stock_trend("SQ"))
 # print(crypto_obj.get_current_price())
 # print(crypto_obj.get_mybtc_table())
