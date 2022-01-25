@@ -100,14 +100,13 @@ def graph_btc_daily(crypto_data):
 #    imgdata = StringIO()
 #    plt.grid()
     plt.savefig(flike, format='svg')
-    b64 = base64.b64encode(flike.getvalue()).decode()
-    context = b64
+    data = flike.getvalue()
 #    data = imgdata.getvalue()
 #    plt.figure().clear()
 #    plt.close()
 #    plt.cla()
 #    plt.clf()
-    return context
+    return data
 
 
 def pie_portfolio_holdings(stock_dict):
