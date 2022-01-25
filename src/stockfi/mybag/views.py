@@ -110,11 +110,13 @@ def crypto(request):
     btc_current = crypto_obj.get_current_price()
     btc_day_trend = crypto_obj.get_pct_change()
     btc_daily_graph = crypto_obj.get_daily_price()
+    btc_hist_graph = crypto_obj.get_hist_btc()
 
     context = {
         'crypto_port': my_btc_table,
         'btc_day_trend': btc_day_trend,
         'btc_current': btc_current,
-        'btc_daily_graph': btc_daily_graph
+        'btc_daily_graph': btc_daily_graph,
+        'btc_hist_graph': btc_hist_graph
     }
     return render(request, 'mybag/cypto.html', context)

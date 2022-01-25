@@ -61,8 +61,13 @@ class Crypto:
        crypto_data = self.get_cached_df("BTC-CAD")
        crypto_data = crypto_data.dropna()
        return graph_btc_daily(crypto_data)
+
+   def get_hist_btc(self):
+       crypto_data = self.get_cached_df("BTC-CAD-HIST")
+       crypto_data = crypto_data.dropna()
+       return graph_btc_daily(crypto_data) 
   
 
-crypto_obj = Crypto(0.01677643)
-print(crypto_obj.get_current_price())
+# crypto_obj = Crypto(0.01677643)
+# print(crypto_obj.get_current_price())
 # print(crypto_obj.get_mybtc_table())
