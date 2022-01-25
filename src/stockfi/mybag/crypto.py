@@ -7,6 +7,7 @@ import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
 from .graph import graph_btc_daily
+from .graph import graph_stock_daily
 
 # BTC-CAD-HIST -> historic
 # BTC-CAD -> 1 day 1min interval
@@ -66,6 +67,12 @@ class Crypto:
        crypto_data = self.get_cached_df("BTC-CAD-HIST")
        crypto_data = crypto_data.dropna()
        return graph_btc_daily(crypto_data) 
+
+#  SQ-trend
+   def get_stock_trend(self,symbol)
+       symbol = "{}-trend".format(symbol)
+       stock_data = self.get_cached_df(symbol)
+       return graph_stock_daily(stock_data,symbol)
   
 
 # crypto_obj = Crypto(0.01677643)

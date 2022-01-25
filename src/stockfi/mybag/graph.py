@@ -108,6 +108,22 @@ def graph_btc_daily(crypto_data):
 #    plt.clf()
     return data
 
+def graph_stock_daily(crypto_data,symbol):
+    crypto_data['Close'].plot(label = symbol, figsize = (7,5))
+    plt.title("{} {}".format("Daily",symbol))
+    plt.grid()
+#    flike = io.BytesIO
+    imgdata = StringIO()
+    plt.grid()
+    plt.savefig(imgdata, format='svg')
+#    data = flike.getvalue()
+    data = imgdata.getvalue()
+#    plt.figure().clear()
+    plt.close()
+#    plt.cla()
+#    plt.clf()
+    return data
+
 
 def pie_portfolio_holdings(stock_dict):
     tickers = []

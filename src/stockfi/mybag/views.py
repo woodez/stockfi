@@ -21,11 +21,14 @@ def show(request,symbol):
     graph = data.get('graph', "NA")
     current_ma200 = data.get('current_ma200', "NA")
     info = Info(symbol, current_ma200)
+    crypto_obj = Crypto(0.01677643)
+    stock_data = crypto_obj.get_stock_trend(self,symbol)
     context = {
         'longName': info.get_longName(),
         'logo_url': info.get_logo_url(),
         'long_sum': info.get_longBusinessSummary(),
         'stock_rating': info.get_stock_rating(),
+        'stock_data': stock_data,
         'avg': graph,
         'volatility': return_graph(symbol, 3, 'volatility'),
         'recommendationMean': info.get_mean(),
