@@ -1,5 +1,4 @@
 import pandas as pd
-import pandas._libs.tslibs.base
 from io import StringIO
 from datetime import date
 import numpy as np
