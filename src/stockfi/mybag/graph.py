@@ -114,18 +114,17 @@ def graph_stock_daily(symbol):
     plt.title("{}".format(symbol))
     plt.grid()
 #    flike = io.BytesIO
-    plt.show()
-##    imgdata = StringIO()
-##    plt.grid()
-##    plt.savefig(imgdata, format='svg')
+#    plt.show()
+    imgdata = StringIO()
+    plt.grid()
+    plt.savefig(imgdata, format='svg')
 #    data = flike.getvalue()
-##    data = imgdata.getvalue()
+    data = imgdata.getvalue()
 #    plt.figure().clear()
-#    plt.close()
+    plt.close()
 #    plt.cla()
 #    plt.clf()
-#    return data
-    return None
+    return data
 
 
 def pie_portfolio_holdings(stock_dict):
@@ -192,7 +191,7 @@ def portfolio_percent_holdings():
     return sorted_dict
 
 
-graph_stock_daily("SQ")
+# graph_stock_daily("SQ")
 
 ##        pct = (float(value['Amount']) / total)) * 100
 ##        print(pct)
