@@ -108,7 +108,9 @@ def graph_btc_daily(crypto_data):
 #    plt.clf()
     return data
 
-def graph_stock_daily(stocks,symbol):
+def graph_stock_daily(symbol):
+    ticker = "{}-trend".format(symbol)
+    stocks = get_cached_df(ticker)
     stocks['Close'].plot(label = symbol, figsize = (7,5))
     plt.title("{}".format(symbol))
     plt.grid()
