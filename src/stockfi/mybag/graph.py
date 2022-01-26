@@ -108,9 +108,9 @@ def graph_btc_daily(crypto_data):
 #    plt.clf()
     return data
 
-def graph_stock_daily(crypto_data,symbol):
-    crypto_data['Close'].plot(label = symbol, figsize = (7,5))
-    plt.title("{} {}".format("Daily",symbol))
+def graph_stock_daily(stocks,symbol):
+    stocks['Close'].plot(label = symbol, figsize = (7,5))
+    plt.title("{}".format(symbol))
     plt.grid()
 #    flike = io.BytesIO
     imgdata = StringIO()
