@@ -6,6 +6,7 @@ import sys
 import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
+import pandas._libs.tslibs.base
 from .graph import graph_btc_daily
 from .graph import graph_stock_daily
 
