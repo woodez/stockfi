@@ -23,7 +23,7 @@ def show(request,symbol):
     info = Info(symbol, current_ma200)
     context = {
         'longName': info.get_longName(),
-        'logo_url': info.get_logo_url()
+        'logo_url': info.get_logo_url(),
         'long_sum': info.get_longBusinessSummary(),
         'stock_rating': info.get_stock_rating(),
         'avg': graph,
