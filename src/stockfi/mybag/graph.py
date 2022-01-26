@@ -19,7 +19,7 @@ def get_cached_df(alias):
     pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
     cur = redis.Redis(connection_pool=pool)
     context = pa.default_serialization_context()
-    all_keys = [key.decode("utf-8") for key in cur.keys()]
+   ## all_keys = [key.decode("utf-8") for key in cur.keys()]
 
     if alias in all_keys:   
         result = cur.get(alias)
@@ -110,21 +110,25 @@ def graph_btc_daily(crypto_data):
 
 def graph_stock_daily(symbol):
     ticker = "{}-trend".format(symbol)
+    print(ticker)
     stocks = get_cached_df(ticker)
+    print(stocks['Close'])
     stocks['Close'].plot(label = symbol, figsize = (7,5))
     plt.title("{}".format(symbol))
     plt.grid()
 #    flike = io.BytesIO
-    imgdata = StringIO()
-    plt.grid()
-    plt.savefig(imgdata, format='svg')
+    plt.show()
+##    imgdata = StringIO()
+##    plt.grid()
+##    plt.savefig(imgdata, format='svg')
 #    data = flike.getvalue()
-    data = imgdata.getvalue()
+##    data = imgdata.getvalue()
 #    plt.figure().clear()
-    plt.close()
+#    plt.close()
 #    plt.cla()
 #    plt.clf()
-    return data
+#    return data
+    return None
 
 
 def pie_portfolio_holdings(stock_dict):
@@ -190,6 +194,8 @@ def portfolio_percent_holdings():
         sorted_dict[w] = hist[w]
     return sorted_dict
 
+
+graph_stock_daily("SQ")
 
 ##        pct = (float(value['Amount']) / total)) * 100
 ##        print(pct)
