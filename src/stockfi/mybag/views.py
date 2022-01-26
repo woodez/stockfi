@@ -22,7 +22,7 @@ def show(request,symbol):
     current_ma200 = data.get('current_ma200', "NA")
     info = Info(symbol, current_ma200)
     crypto_obj = Crypto(0.01677643)
-    stock_data = crypto_obj.get_stock_trend(symbol)
+    stock_data = crypto_obj.get_stock_trend()
     context = {
         'longName': info.get_longName(),
         'logo_url': info.get_logo_url(),
