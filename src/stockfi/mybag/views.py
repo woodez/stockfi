@@ -22,7 +22,6 @@ def show(request,symbol):
     graph = data.get('graph', "NA")
     current_ma200 = data.get('current_ma200', "NA")
     info = Info(symbol, current_ma200)
-    stock_data = graph_stock_daily(symbol)
     context = {
         'longName': info.get_longName(),
         'logo_url': info.get_logo_url(),
@@ -42,7 +41,6 @@ def show(request,symbol):
         'twoHundredDayAverage': info.get_twoHundredDayAverage(),
         'previousClose': info.get_previousClose(),
         'returnOnEquity': info.get_returnOnEquity(),
-        'stock_data': stock_data,
         'open': info.get_open(),
         'symbol': symbol
     }

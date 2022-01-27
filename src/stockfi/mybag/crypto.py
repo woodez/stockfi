@@ -69,12 +69,12 @@ class Crypto:
        return graph_btc_daily(crypto_data) 
 
 #  SQ-trend
-   def get_stock_trend(self):
-       symbol = "{}-trend".format("SQ")
-       stock_data = self.get_cached_df(symbol)
-       # return stock_data
-       return graph_btc_daily(stock_data)
-       #return graph_stock_daily(stock_data,symbol)
+   ##def get_stock_trend(self):
+     ##  symbol = "{}-trend".format("SQ")
+     ##  stock_data = self.get_cached_df(symbol)
+     ##  # return stock_data
+     ##  return graph_btc_daily(stock_data)
+     ##  #return graph_stock_daily(stock_data,symbol)
   
 
 # crypto_obj = Crypto(0.01677643)

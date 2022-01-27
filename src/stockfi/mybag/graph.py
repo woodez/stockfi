@@ -105,28 +105,6 @@ def graph_btc_daily(crypto_data):
 #    plt.clf()
     return data
 
-def graph_stock_daily(symbol):
-    ticker = "{}-trend".format(symbol)
-    print(ticker)
-    stocks = get_cached_df(ticker)
-    print(stocks['Close'])
-    stocks['Close'].plot(label = symbol, figsize = (7,5))
-    plt.title("{}".format(symbol))
-    plt.grid()
-#    flike = io.BytesIO
-#    plt.show()
-    imgdata = StringIO()
-    plt.grid()
-    plt.savefig(imgdata, format='svg')
-#    data = flike.getvalue()
-    data = imgdata.getvalue()
-#    plt.figure().clear()
-    plt.close()
-#    plt.cla()
-#    plt.clf()
-    return data
-
-
 def pie_portfolio_holdings(stock_dict):
     tickers = []
     volume = []
