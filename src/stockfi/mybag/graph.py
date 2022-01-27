@@ -74,7 +74,7 @@ def return_graph(symbol,years,gtype):
        return data 
     else:     
        stockmin['Close'].plot(label = symbolmin, figsize = (15,7))
-       plt.title("{}".format(stockmin))
+       plt.title("{}".format(symbolmin))
        plt.legend()
        imgdata = StringIO()
        plt.grid()
