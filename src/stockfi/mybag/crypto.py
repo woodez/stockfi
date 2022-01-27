@@ -7,7 +7,6 @@ import warnings
 warnings.filterwarnings("ignore")
 import pandas as pd
 from .graph import graph_btc_daily
-from .graph import graph_stock_daily
 
 # BTC-CAD-HIST -> historic
 # BTC-CAD -> 1 day 1min interval
