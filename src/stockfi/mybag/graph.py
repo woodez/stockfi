@@ -3,7 +3,7 @@ from io import StringIO
 from datetime import date
 import numpy as np
 import matplotlib
-matplotlib.use('agg')
+# matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from pandas.plotting import scatter_matrix
 import io, base64
@@ -35,6 +35,7 @@ def return_graph(symbol,years,gtype):
     symbolmin = "{}-trend".format(symbol)
     stockmin = get_cached_df(symbolmin)
     btc = get_cached_df(symbol)
+    print(btc['Open'])
 #    btc = yf.download(symbol,start,end)
     plt.clf()
     if "avg" in gtype:
@@ -72,12 +73,14 @@ def return_graph(symbol,years,gtype):
        plt.cla()
        plt.clf()
        return data 
-    else:     
-       stockmin['Close'].plot(label = symbolmin, figsize = (15,7))
+    else:
+       print(stockmin['Open'])      
+       stockmin['Open'].plot(label = symbolmin, figsize = (15,7))
        plt.title("{}".format(symbolmin))
        plt.legend()
        imgdata = StringIO()
        plt.grid()
+     ##  plt.show() 
        plt.savefig(imgdata, format='svg')
        imgdata.seek(0)
        data = imgdata.getvalue()
@@ -184,6 +187,8 @@ def portfolio_percent_holdings():
         sorted_dict[w] = hist[w]
     return sorted_dict
 
+
+return_graph("SQ",3,"stockday")
 
 # graph_stock_daily("SQ")
 
