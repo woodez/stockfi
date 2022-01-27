@@ -188,7 +188,7 @@ def portfolio_percent_holdings():
     return sorted_dict
 
 
-return_graph("SQ",3,"stockday")
+# return_graph("SQ",3,"stockday")
 
 # graph_stock_daily("SQ")
 
