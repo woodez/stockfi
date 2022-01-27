@@ -28,6 +28,7 @@ def show(request,symbol):
         'stock_rating': info.get_stock_rating(),
         'avg': graph,
         'volatility': return_graph(symbol, 3, 'volatility'),
+        'stockday': return_graph(symbol, 3, 'stockdaily'),
         'recommendationMean': info.get_mean(),
         'priceToBook': info.get_pb(),
         'debtToEquity': info.get_debttoequity(),

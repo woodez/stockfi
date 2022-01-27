@@ -32,6 +32,8 @@ def return_graph(symbol,years,gtype):
     d = date.today()
     start = d.replace(year=d.year - years).strftime("%Y-%m-%d")
     end = d.strftime("%Y-%m-%d")
+    symbolmin = "{}-trend".format(symbol)
+    stockmin = get_cached_df(symbolmin)
     btc = get_cached_df(symbol)
 #    btc = yf.download(symbol,start,end)
     plt.clf()
@@ -56,13 +58,27 @@ def return_graph(symbol,years,gtype):
        plt.cla()
        plt.clf()
        return { "graph": data, "current_ma200": current_ma200_value }
-    else: 
+    elif "volatility" in gtype:: 
        btc['returns'] = (btc['Close']/btc['Close'].shift(1)) -1
        btc['returns'].hist(bins = 100, label = symbol, alpha = 0.5, figsize = (15,7))
        plt.title("Daily Volatility of {}".format(symbol))
        plt.legend()
        imgdata = StringIO()
        plt.savefig(imgdata, dpi=50, format='svg')
+       imgdata.seek(0)
+       data = imgdata.getvalue()
+       plt.figure().clear()
+       plt.close()
+       plt.cla()
+       plt.clf()
+       return data 
+    else:     
+       stockmin['Close'].plot(label = symbolmin, figsize = (15,7))
+       plt.title("{}".format(stockmin))
+       plt.legend()
+       imgdata = StringIO()
+       plt.grid()
+       plt.savefig(imgdata, format='svg')
        imgdata.seek(0)
        data = imgdata.getvalue()
        plt.figure().clear()
