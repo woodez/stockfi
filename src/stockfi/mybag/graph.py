@@ -58,7 +58,7 @@ def return_graph(symbol,years,gtype):
        plt.cla()
        plt.clf()
        return { "graph": data, "current_ma200": current_ma200_value }
-    elif "volatility" in gtype:: 
+    elif "volatility" in gtype:
        btc['returns'] = (btc['Close']/btc['Close'].shift(1)) -1
        btc['returns'].hist(bins = 100, label = symbol, alpha = 0.5, figsize = (15,7))
        plt.title("Daily Volatility of {}".format(symbol))
