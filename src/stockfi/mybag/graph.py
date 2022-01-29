@@ -60,7 +60,7 @@ def return_graph(symbol,years,gtype):
        plt.cla()
        plt.clf()
        return { "graph": data, "current_ma200": current_ma200_value }
-    elif "volatility" in gtype:
+    else:
        btc['returns'] = (btc['Close']/btc['Close'].shift(1)) -1
        btc['returns'].hist(bins = 100, label = symbol, alpha = 0.5, figsize = (15,7))
        plt.title("Daily Volatility of {}".format(symbol))
@@ -74,22 +74,6 @@ def return_graph(symbol,years,gtype):
        plt.cla()
        plt.clf()
        return data 
-    else:
-       df = yf.download(tickers=symbol,period='2d',interval='1m')   
-       df['Open'].plot(label = symbol, figsize = (15,7))
-       plt.title("{}".format(symbol))
-       plt.legend()
-       imgdata = StringIO()
-       plt.grid()
-     ##  plt.show() 
-       plt.savefig(imgdata, format='svg')
-       imgdata.seek(0)
-       data = imgdata.getvalue()
-       plt.figure().clear()
-       plt.close()
-       plt.cla()
-       plt.clf()
-       return data
 
 def graph_portfolio(portfolio_data, name):
 #    portfolio_data['value'].plot(label = "Woodez Innovation Fund", figsize = (7,5))

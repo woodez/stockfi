@@ -19,7 +19,7 @@ def index(request):
 def show(request,symbol):
    # data = return_graph(symbol, 3, 'avg')
    # graph = data.get('graph', "NA")
-    graph = return_graph(symbol, 3, 'test')
+    graph = return_graph(symbol, 3, 'avg')
     current_ma200 = data.get('current_ma200', "NA")
     info = Info(symbol, current_ma200)
     context = {
