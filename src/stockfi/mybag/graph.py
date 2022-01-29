@@ -10,6 +10,7 @@ import io, base64
 import yfinance as yf
 import pyarrow as pa
 import redis
+import sys
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -74,9 +75,9 @@ def return_graph(symbol,years,gtype):
        plt.clf()
        return data 
     else:
-       print(stockmin['Open'])      
-       stockmin['Open'].plot(label = symbolmin, figsize = (15,7))
-       plt.title("{}".format(symbolmin))
+       df = yf.download(tickers=symbol,period='2d',interval='1m')   
+       df['Open'].plot(label = symbol, figsize = (15,7))
+       plt.title("{}".format(symbol))
        plt.legend()
        imgdata = StringIO()
        plt.grid()
