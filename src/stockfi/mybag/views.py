@@ -27,7 +27,7 @@ def show(request,symbol):
         'logo_url': info.get_logo_url(),
         'long_sum': info.get_longBusinessSummary(),
         'stock_rating': info.get_stock_rating(),
-#        'avg': graph,
+        'avg': graph,
 #        'volatility': return_graph(symbol, 3, 'volatility'),
         'recommendationMean': info.get_mean(),
         'priceToBook': info.get_pb(),
