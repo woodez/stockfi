@@ -33,6 +33,8 @@ def return_graph(symbol,years,gtype):
     d = date.today()
     start = d.replace(year=d.year - years).strftime("%Y-%m-%d")
     end = d.strftime("%Y-%m-%d")
+    ticker = "{}-trend".format(symbol)
+    stockday = get_cached_df(ticker)
 ##    symbol = "{}-trend".format(symbol)
     btc = get_cached_df(symbol)
 #    btc = yf.download(symbol,start,end)
@@ -58,7 +60,7 @@ def return_graph(symbol,years,gtype):
        plt.cla()
        plt.clf()
        return { "graph": data, "current_ma200": current_ma200_value }
-    else:
+    elif "volatility" in gtype:
        btc['returns'] = (btc['Close']/btc['Close'].shift(1)) -1
        btc['returns'].hist(bins = 100, label = symbol, alpha = 0.5, figsize = (15,7))
        plt.title("Daily Volatility of {}".format(symbol))
@@ -72,6 +74,22 @@ def return_graph(symbol,years,gtype):
        plt.cla()
        plt.clf()
        return data 
+
+    else:
+       stockday = get_cached_df(ticker)
+       stockday['Close'].plot(label = symbol, figsize = (15,7))
+       plt.title("Daily Movement of {}".format(symbol))
+       plt.legend()
+       imgdata = StringIO()
+       plt.savefig(imgdata, dpi=50, format='svg')
+       imgdata.seek(0)
+       data = imgdata.getvalue()
+       plt.figure().clear()
+       plt.close()
+       plt.cla()
+       plt.clf()
+       return data 
+
 
 def graph_portfolio(portfolio_data, name):
 #    portfolio_data['value'].plot(label = "Woodez Innovation Fund", figsize = (7,5))
