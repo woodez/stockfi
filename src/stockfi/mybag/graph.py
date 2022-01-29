@@ -33,8 +33,6 @@ def return_graph(symbol,years,gtype):
     d = date.today()
     start = d.replace(year=d.year - years).strftime("%Y-%m-%d")
     end = d.strftime("%Y-%m-%d")
-    symbolmin = "{}-trend".format(symbol)
-    stockmin = get_cached_df(symbolmin)
     btc = get_cached_df(symbol)
     print(btc['Open'])
 #    btc = yf.download(symbol,start,end)
