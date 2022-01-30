@@ -109,21 +109,40 @@ def graph_portfolio(portfolio_data, name):
     plt.clf()
     return data
 
-def graph_btc_daily(crypto_data):
-    crypto_data['Close'].plot(label = "Daily BTC", figsize = (7,5))
-    plt.title("{}".format("Daily BTC"))
-    plt.grid()
-#    flike = io.BytesIO
-    imgdata = StringIO()
-    plt.grid()
-    plt.savefig(imgdata, format='svg')
-#    data = flike.getvalue()
-    data = imgdata.getvalue()
-#    plt.figure().clear()
-    plt.close()
-#    plt.cla()
-#    plt.clf()
-    return data
+def graph_btc_daily(crypto_data,type):
+    if "daily" in type:
+       crypto_data['Close'].plot(label = "Daily BTC", figsize = (7,5))
+       plt.title("{}".format("Daily BTC"))
+       plt.grid()
+       imgdata = StringIO()
+       plt.grid()
+       plt.savefig(imgdata, format='svg')
+       data = imgdata.getvalue()
+       plt.figure().clear()
+       plt.close()
+       plt.cla()
+       plt.clf()
+       return data
+    else: 
+       crypto_data['Close'].plot(label = "Historical BTC", figsize = (7,5))
+       cryto_data['MA5'] = crypto_data['Close'].rolling(5).mean()
+       crypto_data['MA50'] = crypto_data['Close'].rolling(50).mean()
+       crypto_data['MA200'] = crypto_data['Close'].rolling(200).mean()
+       crypto_data['Open'].plot(label = symbol, figsize = (15,7))
+       crypto_data['MA5'].plot(label = "MA5")
+       crypto_data['MA50'].plot(label = "MA50")
+       crypto_data['MA200'].plot(label = "MA200")
+       plt.title("{}".format("Historical BTC"))
+       plt.grid()
+       imgdata = StringIO()
+       plt.grid()
+       plt.savefig(imgdata, format='svg')
+       data = imgdata.getvalue()
+       plt.figure().clear()
+       plt.close()
+       plt.cla()
+       plt.clf()
+       return data
 
 def pie_portfolio_holdings(stock_dict):
     tickers = []

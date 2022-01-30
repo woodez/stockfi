@@ -60,12 +60,12 @@ class Crypto:
    def get_daily_price(self):
        crypto_data = self.get_cached_df("BTC-CAD")
        crypto_data = crypto_data.dropna()
-       return graph_btc_daily(crypto_data)
+       return graph_btc_daily(crypto_data,"daily")
 
    def get_hist_btc(self):
        crypto_data = self.get_cached_df("BTC-CAD-HIST")
        crypto_data = crypto_data.dropna()
-       return graph_btc_daily(crypto_data) 
+       return graph_btc_daily(crypto_data,"hist") 
 
 #  SQ-trend
    ##def get_stock_trend(self):
