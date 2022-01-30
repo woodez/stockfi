@@ -38,8 +38,8 @@ def return_graph(symbol,years,gtype):
 ##    symbol = "{}-trend".format(symbol)
     btc = get_cached_df(symbol)
 #    btc = yf.download(symbol,start,end)
-    plt.clf()
     if "avg" in gtype:
+       plt.close()
        btc['MA5'] = btc['Close'].rolling(5).mean()
        btc['MA50'] = btc['Close'].rolling(50).mean()
        btc['MA200'] = btc['Close'].rolling(200).mean()
@@ -55,12 +55,13 @@ def return_graph(symbol,years,gtype):
        imgdata.seek(0)
        current_ma200_value = btc['MA200'].tail(1).values[0]
        data = imgdata.getvalue()
-       plt.figure().clear()
-       plt.close()
-       plt.cla()
-       plt.clf()
+#       plt.figure().clear()
+#       plt.close()
+#       plt.cla()
+#       plt.clf()
        return { "graph": data, "current_ma200": current_ma200_value }
     elif "volatility" in gtype:
+       plt.close()
        btc['returns'] = (btc['Close']/btc['Close'].shift(1)) -1
        btc['returns'].hist(bins = 100, label = symbol, alpha = 0.5, figsize = (15,7))
        plt.title("Daily Volatility of {}".format(symbol))
@@ -69,12 +70,13 @@ def return_graph(symbol,years,gtype):
        plt.savefig(imgdata, dpi=50, format='svg')
        imgdata.seek(0)
        data = imgdata.getvalue()
-       plt.figure().clear()
-       plt.close()
-       plt.cla()
-       plt.clf()
+    #   plt.figure().clear()
+    #   plt.close()
+    #   plt.cla()
+    #   plt.clf()
        return data 
     else:
+       plt.close()
        stockday = get_cached_df(ticker)
        stockday['Close'].plot(label = symbol, figsize = (15,7))
        plt.title("Daily Movement of {}".format(symbol))
@@ -83,21 +85,19 @@ def return_graph(symbol,years,gtype):
        plt.savefig(imgdata, dpi=50, format='svg')
        imgdata.seek(0)
        data = imgdata.getvalue()
-       plt.figure().clear()
-       plt.close()
-       plt.cla()
-       plt.clf()
+    #   plt.figure().clear()
+    #   plt.close()
+    #   plt.cla()
+    #   plt.clf()
        return data 
 
 
 def graph_portfolio(portfolio_data, name):
-#    portfolio_data['value'].plot(label = "Woodez Innovation Fund", figsize = (7,5))
     plt.close()
     portfolio_data["value"] = pd.to_numeric(portfolio_data["value"], downcast="float")
     portfolio_data['pct_change'] = portfolio_data['value'].pct_change() * 100 
     portfolio_data['pct_change'].plot(label = "Woodez Innovation Fund", figsize = (7,5))
     plt.title("{}".format("Woodez Innovation Fund"))
-    plt.legend()
     imgdata = StringIO()
     plt.grid()
     plt.savefig(imgdata, format='svg')
