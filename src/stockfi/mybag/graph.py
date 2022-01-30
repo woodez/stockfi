@@ -74,7 +74,6 @@ def return_graph(symbol,years,gtype):
        plt.cla()
        plt.clf()
        return data 
-
     else:
        stockday = get_cached_df(ticker)
        stockday['Close'].plot(label = symbol, figsize = (15,7))
@@ -113,6 +112,7 @@ def graph_btc_daily(crypto_data,type):
     if "daily" in type:
        crypto_data['Close'].plot(label = "Daily BTC", figsize = (7,5))
        plt.title("{}".format("Daily BTC"))
+       plt.legend()
        plt.grid()
        imgdata = StringIO()
        plt.grid()
@@ -132,9 +132,9 @@ def graph_btc_daily(crypto_data,type):
        crypto_data['MA50'].plot(label = "MA50")
        crypto_data['MA200'].plot(label = "MA200")
        plt.title("{}".format("Historical BTC"))
+       plt.legend()
        plt.grid()
        imgdata = StringIO()
-       plt.grid()
        plt.savefig(imgdata, format='svg')
        data = imgdata.getvalue()
        plt.figure().clear()
