@@ -54,7 +54,8 @@ class Crypto:
 
    def get_std_value(self): 
        crypto_data = self.get_cached_df("BTC-CAD")
-       return crypto_data["Close"].std(axis= 0, skipna = True)
+       test = crypto_data["Close"].std(axis= 0, skipna = True)
+       return '{:,.2f}'.format(test)
 
 
    def get_current_price(self):
