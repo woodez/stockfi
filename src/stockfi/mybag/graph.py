@@ -112,7 +112,9 @@ def graph_portfolio(portfolio_data, name):
 def graph_btc_daily(crypto_data,type):
     if "daily" in type:
        plt.close() 
+       crypto_data['STD'] = crypto_data['Close'].rolling(60).std()
        crypto_data['Close'].plot(label = "Daily BTC", figsize = (7,5))
+       crypto_data['STD'].plot(label = "STD")
        plt.title("{}".format("Daily BTC"))
        plt.legend()
        plt.grid()
@@ -124,19 +126,13 @@ def graph_btc_daily(crypto_data,type):
     #   plt.cla()
     #   plt.clf()
        return data
-    elif "std" in type:
-        plt.clf()
-        plt.close()
-        crypto_data['STD'] = crypto_data['Close'].rolling(60).std(axis= 0, skipna = True)
-        crypto_data['Close'].plot(label = "Close", figsize = (7,5))
-        crypto_data['STD'].plot(label = "STD")
     else: 
        plt.clf() 
        plt.close() 
 #       crypto_data['MA5'] = crypto_data['Close'].rolling(5).mean()
 #       crypto_data['MA50'] = crypto_data['Close'].rolling(50).mean()
        crypto_data['MA200'] = crypto_data['Close'].rolling(200).mean()
-       crypto_data['STD'] = crypto_data['Close'].rolling(50).std(axis= 0, skipna = True)
+       crypto_data['STD'] = crypto_data['Close'].rolling(50).std()
        crypto_data['Close'].plot(label = "Close", figsize = (7,5))
 #       crypto_data['MA5'].plot(label = "MA5")
 #       crypto_data['MA50'].plot(label = "MA50")
