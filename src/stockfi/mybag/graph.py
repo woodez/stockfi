@@ -115,13 +115,12 @@ def graph_btc_daily(crypto_data,type):
        plt.legend()
        plt.grid()
        imgdata = StringIO()
-       plt.grid()
        plt.savefig(imgdata, format='svg')
        data = imgdata.getvalue()
-       plt.figure().clear()
-       plt.close()
-       plt.cla()
-       plt.clf()
+    #   plt.figure().clear()
+    #   plt.close()
+    #   plt.cla()
+    #   plt.clf()
        return data
     else: 
        crypto_data['MA5'] = crypto_data['Close'].rolling(5).mean()
@@ -137,10 +136,10 @@ def graph_btc_daily(crypto_data,type):
        imgdata = StringIO()
        plt.savefig(imgdata, format='svg')
        data = imgdata.getvalue()
-       plt.figure().clear()
-       plt.close()
-       plt.cla()
-       plt.clf()
+#       plt.figure().clear()
+#       plt.close()
+#       plt.cla()
+#       plt.clf()
        return data
 
 def pie_portfolio_holdings(stock_dict):
