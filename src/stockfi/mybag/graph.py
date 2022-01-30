@@ -92,6 +92,7 @@ def return_graph(symbol,years,gtype):
 
 def graph_portfolio(portfolio_data, name):
 #    portfolio_data['value'].plot(label = "Woodez Innovation Fund", figsize = (7,5))
+    plt.close()
     portfolio_data["value"] = pd.to_numeric(portfolio_data["value"], downcast="float")
     portfolio_data['pct_change'] = portfolio_data['value'].pct_change() * 100 
     portfolio_data['pct_change'].plot(label = "Woodez Innovation Fund", figsize = (7,5))
@@ -102,14 +103,15 @@ def graph_portfolio(portfolio_data, name):
     plt.savefig(imgdata, format='svg')
     imgdata.seek(0)
     data = imgdata.getvalue()
-    plt.figure().clear()
-    plt.close()
-    plt.cla()
-    plt.clf()
+    # plt.figure().clear()
+    # plt.close()
+    # plt.cla()
+    # plt.clf()
     return data
 
 def graph_btc_daily(crypto_data,type):
     if "daily" in type:
+       plt.close() 
        crypto_data['Close'].plot(label = "Daily BTC", figsize = (7,5))
        plt.title("{}".format("Daily BTC"))
        plt.legend()
@@ -123,6 +125,7 @@ def graph_btc_daily(crypto_data,type):
     #   plt.clf()
        return data
     else: 
+       plt.close() 
        crypto_data['MA5'] = crypto_data['Close'].rolling(5).mean()
        crypto_data['MA50'] = crypto_data['Close'].rolling(50).mean()
        crypto_data['MA200'] = crypto_data['Close'].rolling(200).mean()
