@@ -127,8 +127,8 @@ def graph_btc_daily(crypto_data,type):
     else: 
        plt.close() 
 #       crypto_data['MA5'] = crypto_data['Close'].rolling(5).mean()
-       crypto_data['MA50'] = crypto_data['Close'].rolling(50).mean()
-#       crypto_data['MA200'] = crypto_data['Close'].rolling(200).mean()
+#       crypto_data['MA50'] = crypto_data['Close'].rolling(50).mean()
+       crypto_data['MA200'] = crypto_data['Close'].rolling(200).mean()
        crypto_data['Close'].plot(label = "Close", figsize = (7,5))
 #       crypto_data['MA5'].plot(label = "MA5")
 #       crypto_data['MA50'].plot(label = "MA50")
