@@ -7,6 +7,19 @@ class Info:
        self.current_ma200 = current_ma200
        self.data = yf.Ticker(name).info
 
+   def get_cached_df(self, datasource):
+       pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
+       cur = redis.Redis(connection_pool=pool)
+       context = pa.default_serialization_context()
+       all_keys = [key.decode("utf-8") for key in cur.keys()]
+
+  #     if self.portfolio in all_keys:   
+       result = cur.get(datasource)
+       dataframe = pd.DataFrame.from_dict(context.deserialize(result))
+
+       return dataframe
+
+
    def get_longName(self):
        return(self.data.get('longName', "NA"))
 
@@ -21,6 +34,12 @@ class Info:
 
    def get_mean(self):
        return(self.data.get('recommendationMean', "NA"))
+
+   def pct_change_1day(ticker):
+       ticker = "{}-trend".format(ticker)
+       stockday = self.get_cached_df(ticker)
+       test = 100*(stockday["Close"].iloc[-1]/stockday["Close"].iloc[0]-1)
+       return '{:,.2f}'.format(test)
 
    def get_pb(self):
        return(self.data.get('priceToBook', "NA"))
