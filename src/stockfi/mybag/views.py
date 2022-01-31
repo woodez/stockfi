@@ -14,7 +14,7 @@ from .models import MyBag
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    return render(request, 'mybag/index.html')
 
 def show(request,symbol):
     data = return_graph(symbol, 3, 'avg')
