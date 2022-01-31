@@ -35,8 +35,8 @@ class Info:
    def get_mean(self):
        return(self.data.get('recommendationMean', "NA"))
 
-   def pct_change_1day(ticker):
-       ticker = "{}-trend".format(ticker)
+   def pct_change_1day():
+       ticker = "{}-trend".format(name)
        stockday = self.get_cached_df(ticker)
        test = 100*(stockday["Close"].iloc[-1]/stockday["Close"].iloc[0]-1)
        return '{:,.2f}'.format(test)
