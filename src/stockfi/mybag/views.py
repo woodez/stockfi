@@ -42,7 +42,7 @@ def show(request,symbol):
         'twoHundredDayAverage': info.get_twoHundredDayAverage(),
         'previousClose': info.get_previousClose(),
         'returnOnEquity': info.get_returnOnEquity(),
-        'pct1daychg': info.pct_change_1day(symbol),
+        'pct1daychg': info.pct_change_1day(),
         'open': info.get_open(),
         'symbol': symbol
     }
