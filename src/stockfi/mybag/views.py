@@ -130,7 +130,7 @@ def crypto(request):
 def movers(request):
     hodl = stock_movers(5)
     gainers = hodl['gainers']
-    loosers = hodle['loosers']
+    loosers = hodl['loosers']
 
     context = {
         'gainer': gainers,
