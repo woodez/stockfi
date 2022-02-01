@@ -4,6 +4,7 @@ from django.template import loader
 from .forms import StockForm
 from .graph import return_graph
 from .graph import pie_portfolio_holdings
+from .graph import stock_movers
 from .graph import pie_portfolio_value
 from .graph import portfolio_percent_holdings
 from .info import Info
@@ -125,3 +126,14 @@ def crypto(request):
         'btc_7day_std': btc_7day_std
     }
     return render(request, 'mybag/cypto.html', context)
+
+def movers(request):
+    hodl = stock_movers(5)
+    gainers = hodl['gainers']
+    loosers = hodle['loosers']
+
+    context = {
+        'gainer': gainers,
+        'downer': loosers
+    }
+    return render(request, 'mybag/movers.html', context)

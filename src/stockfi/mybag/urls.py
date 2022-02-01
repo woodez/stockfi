@@ -6,5 +6,6 @@ urlpatterns = [
     path('ai/<str:symbol>', views.show, name='show'),
     path('bag/<str:portfolio_owner>', views.portfolio, name='portfolio'),
     path('crypto/', views.crypto, name='crypto'),
+    path('mover/', views.mover, name='mover'),
     path('find/', views.stocklookup, name='stocklookup'),
 ]

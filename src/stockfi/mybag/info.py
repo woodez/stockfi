@@ -47,6 +47,7 @@ class Info:
        test = 100*(stockday["Close"].iloc[-1]/stockday["Close"].iloc[0]-1)
        return '{:,.2f}'.format(test)
 
+
    def get_pb(self):
        return(self.data.get('priceToBook', "NA"))
 

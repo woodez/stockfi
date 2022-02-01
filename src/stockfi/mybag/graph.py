@@ -213,6 +213,28 @@ def portfolio_percent_holdings():
         sorted_dict[w] = hist[w]
     return sorted_dict
 
+def stock_dict(hist,sorter,num):
+    gainers_dict = {}
+    gainers_keys = sorted(hist.items(), key=lambda x: x[1], reverse=sorter)
+    for w in gainers_keys:
+        gainers_dict[w[0]] = hist[w[0]]
+    return dict(list(gainers_dict.items())[:num])
+
+def stock_movers(num):
+    df = get_cached_df("woodez_portfolio_details")
+    hist = {}
+    for index, row in df.iterrows():
+        if "." not in row['Name']:
+           ticker = "{}-trend".format(row['Name'])           
+           day_trend = get_cached_df(ticker)
+           day_pct_chg = '{:,.2f}'.format(100*(day_trend["Close"].iloc[-1]/day_trend["Close"].iloc[0]-1))
+           tmpdict = { row['Name']:float(day_pct_chg)}
+           hist.update(tmpdict)
+    gainers_dict = stock_dict(hist, True, num)
+    loosers_dict = stock_dict(hist, False, num)
+    return { 'gainers':gainers_dict, 'loosers':loosers_dict } 
+
+# print(stock_movers())
 
 # return_graph("SQ",3,"stockday")
 
