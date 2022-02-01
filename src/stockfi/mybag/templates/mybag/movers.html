@@ -49,6 +49,25 @@
     </tbody>
   </table>
 
+
+  <h1>Today's Top<span class="badge bg-danger">Losers</span></h1>
+  <table class="table table-bordered border-primary">
+    <thead>
+      <tr class="table-primary">
+        <th class="table-primary" scope="col">Ticker Symbol</th>
+        <th class="table-primary" scope="col">% Change</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key, value in downer.items %}
+      <tr>
+        <th scope="row">{{ key|safe }}</th>
+        <td>{{ value|safe }}%</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
   <footer class="mt-auto text-white-50">
     <p>Woodez.org</p>
   </footer>
