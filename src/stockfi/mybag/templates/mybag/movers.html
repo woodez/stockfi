@@ -31,17 +31,22 @@
     </div>
   </header>
 
-  <table table-bordered>
-      <tr class="table-primary"></tr>
-        <td>Ticker Symbol</td>
-        <td>% Change</td>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ticker Symbol</th>
+        <th scope="col">% Change</th>
       </tr>
+    </thead>
+    <tbody>
       {% for key, value in gainer.items %}
-      <tr class="table-primary">
-        <td colspan="2">{{ key|safe }}</td>
+      <tr>
+        <th scope="row">{{ key|safe }}</th>
         <td>{{ value|safe }}%</td>
       </tr>
-      {% endfor %}  
+      {% endfor %}
+    </tbody>
   </table>
 
   <footer class="mt-auto text-white-50">
