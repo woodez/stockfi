@@ -30,7 +30,7 @@
       </nav>
     </div>
   </header>
-
+  <br>
   <h1>Today's Top<span class="badge bg-primary">Gainers</span></h1>
   <table class="table table-bordered border-primary">
     <thead>
@@ -41,15 +41,15 @@
     </thead>
     <tbody>
       {% for key, value in gainer.items %}
-      <tr>
-        <th scope="row">{{ key|safe }}</th>
-        <td>{{ value|safe }}%</td>
+      <tr class="table-light">
+        <th class="table-light" scope="row">{{ key|safe }}</th>
+        <td class="table-light">{{ value|safe }}%</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 
-
+  <br>
   <h1>Today's Top<span class="badge bg-danger">Losers</span></h1>
   <table class="table table-bordered border-primary">
     <thead>
@@ -60,9 +60,9 @@
     </thead>
     <tbody>
       {% for key, value in downer.items %}
-      <tr>
-        <th scope="row">{{ key|safe }}</th>
-        <td>{{ value|safe }}%</td>
+      <tr class="table-light">
+        <th class="table-light" scope="row">{{ key|safe }}</th>
+        <td class="table-light">{{ value|safe }}%</td>
       </tr>
       {% endfor %}
     </tbody>
