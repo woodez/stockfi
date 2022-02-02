@@ -225,16 +225,21 @@ def stock_movers(num):
     hist = {}
     for index, row in df.iterrows():
         if "." not in row['Name']:
+           symbol = row['Name']
+           prevclose = float(yf.Ticker(symbol).info['previousClose'])
            ticker = "{}-trend".format(row['Name'])           
            day_trend = get_cached_df(ticker)
-           day_pct_chg = '{:,.2f}'.format(100*(day_trend["Close"].iloc[-1]/day_trend["Close"].iloc[0]-1))
+           day_pct_chg = '{:,.2f}'.format(100*(day_trend["Close"].iloc[-1]/prevclose -1))
            tmpdict = { row['Name']:float(day_pct_chg)}
            hist.update(tmpdict)
     gainers_dict = stock_dict(hist, True, num)
     loosers_dict = stock_dict(hist, False, num)
     return { 'gainers':gainers_dict, 'loosers':loosers_dict } 
 
-# print(stock_movers())
+## tickers = yf.Ticker('SQ').info['open']
+## print(tickers)
+## test = stock_movers(5)
+## print(test)
 
 # return_graph("SQ",3,"stockday")
 
