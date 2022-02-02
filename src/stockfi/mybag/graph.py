@@ -226,7 +226,8 @@ def stock_movers(num):
     for index, row in df.iterrows():
         if "." not in row['Name']:
            symbol = row['Name']
-           prevclose = float(yf.Ticker(symbol).info['previousClose'])
+#           prevclose = float(yf.Ticker(symbol).info['previousClose'])
+           prevclose = 122.29
            ticker = "{}-trend".format(row['Name'])           
            day_trend = get_cached_df(ticker)
            day_pct_chg = '{:,.2f}'.format(100*(day_trend["Close"].iloc[-1]/prevclose -1))
