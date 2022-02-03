@@ -231,7 +231,7 @@ def stock_movers(num):
     for index, row in df.iterrows():
         if "." not in row['Name']:
            symbol = row['Name']
-           prevclose = float(close_hist['Name'])
+           prevclose = float(close_hist[symbol])
 #           prevclose = 122.29
            ticker = "{}-trend".format(row['Name'])           
            day_trend = get_cached_df(ticker)
