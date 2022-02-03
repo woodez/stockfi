@@ -222,12 +222,17 @@ def stock_dict(hist,sorter,num):
 
 def stock_movers(num):
     df = get_cached_df("woodez_portfolio_details")
+    df_close = get_cached_df("ticker_close")
+    close_hist = {}
+    for index, row in df_close.iterrows():
+        tmpdict = { row['Name']:row['Amount'] }
+        close_hist.update(tmpdict)
     hist = {}
     for index, row in df.iterrows():
         if "." not in row['Name']:
            symbol = row['Name']
-#           prevclose = float(yf.Ticker(symbol).info['previousClose'])
-           prevclose = 122.29
+           prevclose = float(close_hist['Name'])
+#           prevclose = 122.29
            ticker = "{}-trend".format(row['Name'])           
            day_trend = get_cached_df(ticker)
            day_pct_chg = '{:,.2f}'.format(100*(day_trend["Close"].iloc[-1]/prevclose -1))
