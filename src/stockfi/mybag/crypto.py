@@ -49,21 +49,24 @@ class Crypto:
            btc_dict.update(tmpdict)
        return btc_dict
 
-   def get_pct_change(self):
-       crypto_data = self.get_cached_df("BTC-CAD")
-       crypto_data["myvalue"] = crypto_data['Close'] * self.mysatoshi
+   def get_pct_change(self,datasource):
+       crypto_data = self.get_cached_df(datasource)
+       if "BTC" in datasource:
+           crypto_data["myvalue"] = crypto_data['Close'] * self.mysatoshi
+       else:
+           crypto_data["myvalue"] = crypto_data['Close'] * self.mygwei
        crypto_data = crypto_data.dropna()
        test = 100*(crypto_data["myvalue"].iloc[-1]/crypto_data["myvalue"].iloc[0]-1) 
        return '{:,.2f}'.format(test)
 
-   def get_std_value(self): 
-       crypto_data = self.get_cached_df("BTC-CAD")
+   def get_std_value(self,datasource): 
+       crypto_data = self.get_cached_df(datasource)
        test = crypto_data["Close"].std(axis= 0, skipna = True)
        return '{:,.2f}'.format(test)
 
 
-   def get_current_price(self):
-       crypto_data = self.get_cached_df("BTC-CAD")
+   def get_current_price(self,datasource):
+       crypto_data = self.get_cached_df(datasource)
        price = crypto_data['Close'].tail(1)[0]
        return '{:,.2f}'.format(price)
 

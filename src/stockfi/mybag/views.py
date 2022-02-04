@@ -111,20 +111,26 @@ def crypto(request):
     crypto_obj = Crypto(0.01677643,0.09893748)
     my_gwei_table = crypto_obj.get_mybtc_table("normal","ETH-CAD-HIST","gwei")
     my_btc_table = crypto_obj.get_mybtc_table("normal","BTC-CAD-HIST","satoshi")
-    btc_current = crypto_obj.get_current_price()
-    btc_day_trend = crypto_obj.get_pct_change()
+    btc_current = crypto_obj.get_current_price("BTC-CAD")
+    eth_current = crypto_obj.get_current_price("ETH-CAD")
+    btc_day_trend = crypto_obj.get_pct_change("BTC-CAD")
+    eth_day_trend = crypto_obj.get_pct_change("ETH-CAD")
     btc_daily_graph = crypto_obj.get_daily_price()
     btc_hist_graph = crypto_obj.get_hist_btc()
-    btc_7day_std = crypto_obj.get_std_value()
+    btc_7day_std = crypto_obj.get_std_value("BTC-CAD")
+    eth_7day_std = crypto_obj.get_std_value("ETH-CAD")
    
     context = {
         'crypto_port': my_btc_table,
         'gwei_table': my_gwei_table,
         'btc_day_trend': btc_day_trend,
+        'eth_day_trend': eth_day_trend,
         'btc_current': btc_current,
+        'eth_current': eth_current,
         'btc_daily_graph': btc_daily_graph,
         'btc_hist_graph': btc_hist_graph,
-        'btc_7day_std': btc_7day_std
+        'btc_7day_std': btc_7day_std,
+        'eth_7day_std': eth_7day_std
     }
     return render(request, 'mybag/cypto.html', context)
 
