@@ -109,8 +109,9 @@ def portfolio(request,portfolio_owner):
 
 def crypto(request):
     crypto_obj = Crypto(0.01677643)
-    my_btc_table_pct = crypto_obj.get_mybtc_table("pct")
-    my_btc_table = crypto_obj.get_mybtc_table("normal")
+    gwei_obj = Crypto(0.09893748)
+    my_gwei_table = gwei_obj.get_mybtc_table("normal","ETH-CAD-HIST","gwei")
+    my_btc_table = crypto_obj.get_mybtc_table("normal","BTC-CAD-HIST","satoshi")
     btc_current = crypto_obj.get_current_price()
     btc_day_trend = crypto_obj.get_pct_change()
     btc_daily_graph = crypto_obj.get_daily_price()
@@ -119,6 +120,7 @@ def crypto(request):
    
     context = {
         'crypto_port': my_btc_table,
+        'gwei_table': my_gwei_table,
         'btc_day_trend': btc_day_trend,
         'btc_current': btc_current,
         'btc_daily_graph': btc_daily_graph,

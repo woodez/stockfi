@@ -13,8 +13,9 @@ from .graph import graph_btc_daily
 
 class Crypto:
    
-   def __init__(self, mysatoshi):
+   def __init__(self, mysatoshi, mygwei):
        self.mysatoshi = mysatoshi
+       self.mygwei = mygwei
 
    def get_cached_df(self, datasource):
        pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
@@ -30,9 +31,12 @@ class Crypto:
 
   #     return None
     
-   def get_mybtc_table(self,output):
-       crypto_data = self.get_cached_df("BTC-CAD-HIST")
-       crypto_data["myvalue"] = crypto_data['Close'] * self.mysatoshi
+   def get_mybtc_table(self,output,datatype,crypto):
+       crypto_data = self.get_cached_df(datatype)
+       if "satoshi" in crypto:
+          crypto_data["myvalue"] = crypto_data['Close'] * self.mysatoshi
+       else:
+          crypto_data["myvalue"] = crypto_data['Close'] * self.mygwei
        if "pct" in output:
           crypto_data['myvalue'] = crypto_data['myvalue'].pct_change() * 100
        crypto_data = crypto_data.tail(10)
