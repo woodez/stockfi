@@ -108,9 +108,8 @@ def portfolio(request,portfolio_owner):
     return render(request, 'mybag/portfolio.html', context)
 
 def crypto(request):
-    crypto_obj = Crypto(0.01677643)
-    gwei_obj = Crypto(0.09893748)
-    my_gwei_table = gwei_obj.get_mybtc_table("normal","ETH-CAD-HIST","gwei")
+    crypto_obj = Crypto(0.01677643,0.09893748)
+    my_gwei_table = crypto_obj.get_mybtc_table("normal","ETH-CAD-HIST","gwei")
     my_btc_table = crypto_obj.get_mybtc_table("normal","BTC-CAD-HIST","satoshi")
     btc_current = crypto_obj.get_current_price()
     btc_day_trend = crypto_obj.get_pct_change()
