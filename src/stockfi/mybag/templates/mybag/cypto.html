@@ -47,6 +47,7 @@
                 {% else %}
                    <span class="badge rounded-pill bg-success">BTC:{{ btc_day_trend|safe }}%</span> 
                 {% endif %}
+                <br>
                 <p class="card-text">Gwei: 0.01677643 ETH</p>
                 <p class="card-text">ETH: ${{ eth_current|safe }}</p>
                 <p class="card-text">ETH 7day Std: {{ eth_7day_std|safe }}</p>
@@ -82,6 +83,8 @@
               {% endfor %}  
               </tbody>
             </table>
+            {{ btc_daily_graph|safe }}
+            {{ btc_hist_graph|safe }}  
 
             <h3>Gwei<span class="badge bg-primary">Holdings</span></h3>
             <table class="table">
@@ -104,10 +107,8 @@
               {% endfor %}  
               </tbody>
             </table>            
-
-
-          {{ btc_daily_graph|safe }}
-          {{ btc_hist_graph|safe }}  
+          {{ eth_daily_graph|safe }}
+          {{ eth_hist_graph|safe }}  
           </div>
 
 

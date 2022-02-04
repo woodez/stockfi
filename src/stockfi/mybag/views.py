@@ -115,8 +115,10 @@ def crypto(request):
     eth_current = crypto_obj.get_current_price("ETH-CAD")
     btc_day_trend = crypto_obj.get_pct_change("BTC-CAD")
     eth_day_trend = crypto_obj.get_pct_change("ETH-CAD")
-    btc_daily_graph = crypto_obj.get_daily_price()
-    btc_hist_graph = crypto_obj.get_hist_btc()
+    btc_daily_graph = crypto_obj.get_daily_price("BTC-CAD")
+    eth_daily_graph = crypto_obj.get_daily_price("ETH-CAD")
+    btc_hist_graph = crypto_obj.get_hist_btc("BTC-CAD-HIST")
+    eth_hist_graph = crypto_obj.get_hist_btc("ETH-CAD-HIST")
     btc_7day_std = crypto_obj.get_std_value("BTC-CAD")
     eth_7day_std = crypto_obj.get_std_value("ETH-CAD")
    
@@ -128,7 +130,9 @@ def crypto(request):
         'btc_current': btc_current,
         'eth_current': eth_current,
         'btc_daily_graph': btc_daily_graph,
+        'eth_daily_graph': eth_daily_graph,
         'btc_hist_graph': btc_hist_graph,
+        'eth_hist_graph': eth_hist_graph,
         'btc_7day_std': btc_7day_std,
         'eth_7day_std': eth_7day_std
     }

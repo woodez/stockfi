@@ -70,13 +70,13 @@ class Crypto:
        price = crypto_data['Close'].tail(1)[0]
        return '{:,.2f}'.format(price)
 
-   def get_daily_price(self):
-       crypto_data = self.get_cached_df("BTC-CAD")
+   def get_daily_price(self,datasource):
+       crypto_data = self.get_cached_df(datasource)
        crypto_data = crypto_data.dropna()
        return graph_btc_daily(crypto_data,"daily")
 
-   def get_hist_btc(self):
-       crypto_data = self.get_cached_df("BTC-CAD-HIST")
+   def get_hist_btc(self,datasource):
+       crypto_data = self.get_cached_df(datasource)
        crypto_data = crypto_data.dropna()
        return graph_btc_daily(crypto_data,"hist") 
 
