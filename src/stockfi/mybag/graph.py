@@ -238,7 +238,7 @@ def stock_movers(num):
            day_trend = get_cached_df(ticker)
            last_trade_day = float(day_trend["Close"].iloc[-1])
            difference = float(last_trade_day - prevclose)
-           day_pct_chg = float(100 * (difference/prevclose))
+           day_pct_chg = '{:,.2f}'.format(float(100 * (difference/prevclose)))
 #           day_pct_chg = '{:,.2f}'.format(float(100*(day_trend["Close"].iloc[-1]/prevclose)))
            tmpdict = { row['Name']:day_pct_chg }
            hist.update(tmpdict)
