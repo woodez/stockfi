@@ -213,7 +213,9 @@ def portfolio_percent_holdings():
         sorted_dict[w] = hist[w]
     return sorted_dict
 
-def stock_dict(hist,sorter,num):
+def stock_dict(hist,sorter,num,type):
+    if "loosers" is type:
+       hist = dict((k, v) for k, v in hist.items() if float(v) <= 0) 
     gainers_dict = {}
     gainers_keys = sorted(hist.items(), key=lambda x: x[1], reverse=sorter)
     for w in gainers_keys:
@@ -223,11 +225,12 @@ def stock_dict(hist,sorter,num):
 def stock_movers(num):
     df = get_cached_df("woodez_portfolio_details")
     df_close = get_cached_df("ticker_close")
-#    print(df_close)
     close_hist = {}
+
     for index, row in df_close.iterrows():
         tmpdict = { row['Name']:row['Amount'] }
         close_hist.update(tmpdict)
+
     hist = {}
     for index, row in df.iterrows():
         if "." not in row['Name'] and "-" not in row['Name']:
@@ -242,14 +245,14 @@ def stock_movers(num):
 #           day_pct_chg = '{:,.2f}'.format(float(100*(day_trend["Close"].iloc[-1]/prevclose)))
            tmpdict = { row['Name']:day_pct_chg }
            hist.update(tmpdict)
-    gainers_dict = stock_dict(hist, True, num)
-    loosers_dict = stock_dict(hist, True, num)
+    gainers_dict = stock_dict(hist, True, num, "gainers")
+    loosers_dict = stock_dict(hist, True, num, "loosers")
     return { 'gainers':gainers_dict, 'loosers':loosers_dict } 
 
 ####tickers = yf.Ticker('SQ').info['open']
 ## print(tickers)
-##test = stock_movers(5)
-##print(test)
+## test = stock_movers(5)
+## print(test)
 ###day_trend = get_cached_df("SQ-trend")
 ###print(day_trend['Datetime'])
 # return_graph("SQ",3,"stockday")
