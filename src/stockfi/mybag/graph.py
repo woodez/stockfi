@@ -243,7 +243,7 @@ def stock_movers(num):
            tmpdict = { row['Name']:day_pct_chg }
            hist.update(tmpdict)
     gainers_dict = stock_dict(hist, True, num)
-    loosers_dict = stock_dict(hist, False, num)
+    loosers_dict = stock_dict(hist, True, num)
     return { 'gainers':gainers_dict, 'loosers':loosers_dict } 
 
 ####tickers = yf.Ticker('SQ').info['open']
