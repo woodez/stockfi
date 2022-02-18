@@ -58,7 +58,7 @@ class Portfolio:
 #   df_redis = get_cached_df("woodez_sentiment")
 
    def get_pct_change(self):
-       df = self.get_cached_df()
+       df = self.get_cached_df(self.portfolio)
        df["value"] = pd.to_numeric(df["value"], downcast="float")
        test = 100*(df["value"].iloc[-1]/df["value"].iloc[0]-1) 
 #       df["pct_change"] = df["value"].pct_change()
