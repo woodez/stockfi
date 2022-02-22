@@ -116,7 +116,7 @@ def graph_portfolio_sentiment():
     plt.close()
     portfolio_sent["value"] = pd.to_numeric(portfolio_sent["value"], downcast="float")
     portfolio_sent["value"].plot(figsize = (7,5))
-    plt.title("{}".format(Woodez Innovation Fund Sentiment))
+    plt.title("{}".format("Woodez Innovation Fund Sentiment"))
     imgdata = StringIO()
     plt.grid()
     plt.savefig(imgdata, format='svg')
