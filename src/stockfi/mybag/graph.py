@@ -109,6 +109,21 @@ def graph_portfolio(portfolio_data, name):
     # plt.clf()
     return data
 
+
+def graph_portfolio_sentiment():
+    portfolio_sent = get_cached_df("woodez_sentiment")
+    print(portfolio_sent)
+    plt.close()
+    portfolio_sent["value"] = pd.to_numeric(portfolio_sent["value"], downcast="float")
+    portfolio_sent["value"].plot(figsize = (7,5))
+    plt.title("{}".format(Woodez Innovation Fund Sentiment))
+    imgdata = StringIO()
+    plt.grid()
+    plt.savefig(imgdata, format='svg')
+    imgdata.seek(0)
+    data = imgdata.getvalue()
+    return data
+
 def graph_btc_daily(crypto_data,type):
     if "daily" in type:
        plt.close() 
@@ -262,10 +277,11 @@ def stock_movers(num):
 
 
 
+# graph_portfolio_sentiment()
 ####tickers = yf.Ticker('SQ').info['open']
 ## print(tickers)
-test = stock_movers(5)
-print(test)
+#####test = stock_movers(5)
+#####print(test)
 ###day_trend = get_cached_df("SQ-trend")
 ###print(day_trend['Datetime'])
 # return_graph("SQ",3,"stockday")

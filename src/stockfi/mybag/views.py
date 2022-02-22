@@ -7,6 +7,7 @@ from .graph import pie_portfolio_holdings
 from .graph import stock_movers
 from .graph import pie_portfolio_value
 from .graph import portfolio_percent_holdings
+from .graph import graph_portfolio_sentiment
 from .info import Info
 from .portfolio import Portfolio
 from .crypto import Crypto
@@ -84,6 +85,7 @@ def portfolio(request,portfolio_owner):
     port_value = portfolio_obj.get_porfolio_value()
     port_trend = portfolio_obj.get_daily_trend()
     port_graph = portfolio_obj.get_portfolio_graph()
+    sent_graph = graph_portfolio_sentiment()
     holding_pie = pie_portfolio_holdings(stock_dict)
     cap_pie = pie_portfolio_value()
     port_dict = portfolio_obj.get_portfolio_table()
@@ -99,6 +101,7 @@ def portfolio(request,portfolio_owner):
        'portfolio_total': port_value,
        'portfolio_trend': port_trend,
        'portfolio_graph': port_graph,
+       'sentiment_graph': sent_graph,
        'portfolio_holdings': holding_pie,
        'portfolio_cap': cap_pie,
        'portfolio_data': port_dict,
