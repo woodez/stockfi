@@ -115,6 +115,8 @@ def graph_portfolio_sentiment():
     print(portfolio_sent)
     plt.close()
     portfolio_sent["value"] = pd.to_numeric(portfolio_sent["value"], downcast="float")
+    portfolio_sent["Date"] = pd.to_datetime(portfolio_sent["date"])
+    portfolio_sent = portfolio_data.set_index('Date')
     portfolio_sent["value"].plot(figsize = (7,5))
     plt.title("{}".format("Woodez Innovation Fund Sentiment"))
     imgdata = StringIO()
