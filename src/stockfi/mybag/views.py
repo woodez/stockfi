@@ -118,7 +118,7 @@ def crypto(request):
     my_btc_table = crypto_obj.get_mybtc_table("normal","BTC-CAD-HIST","satoshi")
     btc_current = crypto_obj.get_current_price("BTC-CAD")
     eth_current = crypto_obj.get_current_price("ETH-CAD")
-    btc_sent_graph = graph_portfolio_sentiment("btc_sentiment","BTC Sentiment")
+    btc_sent_graph = graph_portfolio_sentiment("war_sentiment","BTC Sentiment")
     btc_day_trend = crypto_obj.get_pct_change("BTC-CAD")
     eth_day_trend = crypto_obj.get_pct_change("ETH-CAD")
     btc_daily_graph = crypto_obj.get_daily_price("BTC-CAD")
