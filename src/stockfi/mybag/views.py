@@ -85,7 +85,7 @@ def portfolio(request,portfolio_owner):
     port_value = portfolio_obj.get_porfolio_value()
     port_trend = portfolio_obj.get_daily_trend()
     port_graph = portfolio_obj.get_portfolio_graph()
-    sent_graph = graph_portfolio_sentiment()
+    sent_graph = graph_portfolio_sentiment("woodez_sentiment","Woodez Innovation Fund Sentiment")
     holding_pie = pie_portfolio_holdings(stock_dict)
     cap_pie = pie_portfolio_value()
     port_dict = portfolio_obj.get_portfolio_table()
@@ -118,6 +118,7 @@ def crypto(request):
     my_btc_table = crypto_obj.get_mybtc_table("normal","BTC-CAD-HIST","satoshi")
     btc_current = crypto_obj.get_current_price("BTC-CAD")
     eth_current = crypto_obj.get_current_price("ETH-CAD")
+    btc_sent_graph = graph_portfolio_sentiment("btc_sentiment","BTC Sentiment")
     btc_day_trend = crypto_obj.get_pct_change("BTC-CAD")
     eth_day_trend = crypto_obj.get_pct_change("ETH-CAD")
     btc_daily_graph = crypto_obj.get_daily_price("BTC-CAD")
@@ -136,6 +137,7 @@ def crypto(request):
         'eth_current': eth_current,
         'btc_daily_graph': btc_daily_graph,
         'eth_daily_graph': eth_daily_graph,
+        'btc_sentiment_graph': btc_sent_graph,
         'btc_hist_graph': btc_hist_graph,
         'eth_hist_graph': eth_hist_graph,
         'btc_7day_std': btc_7day_std,

@@ -110,21 +110,22 @@ def graph_portfolio(portfolio_data, name):
     return data
 
 
-def graph_portfolio_sentiment():
-    portfolio_sent = get_cached_df("woodez_sentiment")
+def graph_portfolio_sentiment(data_key,title):
+    portfolio_sent = get_cached_df(data_key)
     print(portfolio_sent)
     plt.close()
     portfolio_sent["value"] = pd.to_numeric(portfolio_sent["value"], downcast="float")
     portfolio_sent["Date"] = pd.to_datetime(portfolio_sent["date"])
     portfolio_sent = portfolio_sent.set_index('Date')
     portfolio_sent["value"].plot(figsize = (7,5))
-    plt.title("{}".format("Woodez Innovation Fund Sentiment"))
+    plt.title("{}".format(title))
     imgdata = StringIO()
     plt.grid()
     plt.savefig(imgdata, format='svg')
     imgdata.seek(0)
     data = imgdata.getvalue()
     return data
+
 
 def graph_btc_daily(crypto_data,type):
     if "daily" in type:
