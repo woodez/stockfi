@@ -149,9 +149,14 @@ def movers(request):
     hodl = stock_movers(5)
     gainers = hodl['gainers']
     loosers = hodl['loosers']
+    market_sent_graph = graph_portfolio_sentiment("market_sentiment","Stock Market Sentiment")
+    war_sent_graph = graph_portfolio_sentiment("war_sentiment","Putin War Sentiment")
+                        
 
     context = {
         'gainer': gainers,
-        'downer': loosers
+        'downer': loosers,
+        'market_sent_graph': market_sent_graph,
+        'war_sent_graph': war_sent_graph
     }
     return render(request, 'mybag/movers.html', context)
