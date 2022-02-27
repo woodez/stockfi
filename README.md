@@ -1,5 +1,7 @@
 # stockfi
 
+https://stackabuse.com/working-with-redis-in-python-with-django/
+
 investment tools.
 ##
 https://risk-engineering.org/notebook/stock-market.html

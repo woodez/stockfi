@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'hello_world',
     'testdb',
     'reset_migrations',
+    'rest_framework',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -94,6 +96,8 @@ DATABASES = {
     }
 }
 
+REDIS_HOST = 'redis01.woodez.net'
+REDIS_PORT = '6379'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators

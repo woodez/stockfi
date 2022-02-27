@@ -22,5 +22,6 @@ urlpatterns = [
     path('stock/', include('mybag.urls')),
     path('cypto/', include('mybag.urls')),
     path('mover/', include('mybag.urls')),
+    path('api/', include('api.urls')),
     path('admin/', admin.site.urls),
 ]
