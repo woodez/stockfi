@@ -3,10 +3,12 @@ import math
 import pyarrow as pa
 import redis
 import sys
+import json
 import warnings
+import requests
 warnings.filterwarnings("ignore")
 import pandas as pd
-from .graph import graph_btc_daily
+# from .graph import graph_btc_daily
 
 # BTC-CAD-HIST -> historic
 # BTC-CAD -> 1 day 1min interval
@@ -18,14 +20,20 @@ class Crypto:
        self.mygwei = mygwei
 
    def get_cached_df(self, datasource):
-       pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
-       cur = redis.Redis(connection_pool=pool)
-       context = pa.default_serialization_context()
-       all_keys = [key.decode("utf-8") for key in cur.keys()]
+       url = "http://127.0.0.1:8080/api/{}".format(datasource)
+       response = requests.get(url)
+       df_json = response.json()
+       df_dict = json.loads(df_json)
+       column = df_dict.keys()
+       dataframe = pd.DataFrame(df_dict, columns = column)
+##       pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
+##       cur = redis.Redis(connection_pool=pool)
+##       context = pa.default_serialization_context()
+##       all_keys = [key.decode("utf-8") for key in cur.keys()]
 
   #     if self.portfolio in all_keys:   
-       result = cur.get(datasource)
-       dataframe = pd.DataFrame.from_dict(context.deserialize(result))
+##       result = cur.get(datasource)
+##       dataframe = pd.DataFrame.from_dict(context.deserialize(result))
 
        return dataframe
 
@@ -87,9 +95,20 @@ class Crypto:
      ##  # return stock_data
      ##  return graph_btc_daily(stock_data)
      ##  #return graph_stock_daily(stock_data,symbol)
-  
 
-# crypto_obj = Crypto(0.01677643)
+crypto_obj = Crypto(0.01677643,0.09893748)
+print(crypto_obj.get_current_price("BTC-CAD"))
+
+##crypto_obj = Crypto(0.01677643,0.007978979)
+##df = crypto_obj.get_cached_df("BTC-CAD")
+#print(df)
+##df_json = df.to_json()
+##df_dict = json.loads(df_json)
+##column = df_dict.keys()
+##df1 = pd.DataFrame(df_dict, columns = column)
+##print(df1)
+
+##print(type(df1))
 # print(crypto_obj.get_stock_trend("SQ"))
 # print(crypto_obj.get_current_price())
 # print(crypto_obj.get_mybtc_table())
