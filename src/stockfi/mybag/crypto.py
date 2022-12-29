@@ -4,6 +4,8 @@ import pyarrow as pa
 import redis
 import sys
 import json
+import time
+import datetime
 import warnings
 import requests
 warnings.filterwarnings("ignore")
@@ -20,20 +22,21 @@ class Crypto:
        self.mygwei = mygwei
 
    def get_cached_df(self, datasource):
-       url = "http://127.0.0.1:8080/api/{}".format(datasource)
-       response = requests.get(url)
-       df_json = response.json()
-       df_dict = json.loads(df_json)
-       column = df_dict.keys()
-       dataframe = pd.DataFrame(df_dict, columns = column)
-##       pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
-##       cur = redis.Redis(connection_pool=pool)
-##       context = pa.default_serialization_context()
-##       all_keys = [key.decode("utf-8") for key in cur.keys()]
+####       url = "http://127.0.0.1:8000/api/{}".format(datasource)
+####       response = requests.get(url)
+####       df_json = response.json()
+####       df_dict = json.loads(df_json)
+####       column = df_dict.keys()
+####       dataframe = pd.DataFrame(df_dict, columns = column)
+#       print(type(dataframe))
+       pool = redis.ConnectionPool(host='redis01.woodez.net',port='6379', db=0) 
+       cur = redis.Redis(connection_pool=pool)
+       context = pa.default_serialization_context()
+       all_keys = [key.decode("utf-8") for key in cur.keys()]
 
   #     if self.portfolio in all_keys:   
-##       result = cur.get(datasource)
-##       dataframe = pd.DataFrame.from_dict(context.deserialize(result))
+       result = cur.get(datasource)
+       dataframe = pd.DataFrame.from_dict(context.deserialize(result))
 
        return dataframe
 
@@ -41,6 +44,7 @@ class Crypto:
     
    def get_mybtc_table(self,output,datatype,crypto):
        crypto_data = self.get_cached_df(datatype)
+       print(crypto_data)
        if "satoshi" in crypto:
           crypto_data["myvalue"] = crypto_data['Close'] * self.mysatoshi
        else:
@@ -95,11 +99,10 @@ class Crypto:
      ##  # return stock_data
      ##  return graph_btc_daily(stock_data)
      ##  #return graph_stock_daily(stock_data,symbol)
-
 crypto_obj = Crypto(0.01677643,0.09893748)
-print(crypto_obj.get_current_price("BTC-CAD"))
+df = crypto_obj.get_current_price("BTC-CAD")
 
-##crypto_obj = Crypto(0.01677643,0.007978979)
+# crypto_obj = Crypto(0.01677643,0.007978979)
 ##df = crypto_obj.get_cached_df("BTC-CAD")
 #print(df)
 ##df_json = df.to_json()
@@ -111,4 +114,4 @@ print(crypto_obj.get_current_price("BTC-CAD"))
 ##print(type(df1))
 # print(crypto_obj.get_stock_trend("SQ"))
 # print(crypto_obj.get_current_price())
-# print(crypto_obj.get_mybtc_table())
+print(crypto_obj.get_mybtc_table("normal","BTC-CAD-HIST","satoshi"))
