@@ -233,16 +233,16 @@ def portfolio_percent_holdings():
 
 def stock_dict(hist,sorter,num,type):
     if "loosers" in type:
-       test = dict((k, v) for k, v in hist.items() if float(v) <= 0)
+       test = dict((k, v) for k, v in hist.items() if float(v) <= -1)
        if not test:
           hist = hist
-          sorter = True
+          sorter = sorter
        else:  
           hist = test 
     if "gainers" in type:
        test = dict((k, v) for k, v in hist.items() if float(v) >= 0)
        if not test:
-          sorter = True
+          sorter = sorter
           hist = dict((k, v) for k, v in hist.items() if float(v) < 0)
     gainers_dict = {}
 #    gainers_keys = sorted(hist.items(), key=lambda x: x[1], reverse=sorter)
