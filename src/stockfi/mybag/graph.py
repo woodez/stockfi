@@ -283,8 +283,7 @@ def stock_movers(num):
 # graph_portfolio_sentiment()
 ####tickers = yf.Ticker('SQ').info['open']
 ## print(tickers)
-#####test = stock_movers(5)
-#####print(test)
+##print(test)
 ###day_trend = get_cached_df("SQ-trend")
 ###print(day_trend['Datetime'])
 # return_graph("SQ",3,"stockday")
